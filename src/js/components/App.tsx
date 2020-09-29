@@ -3,12 +3,16 @@ import { CurrentModule, useApp } from "../util/CurrentModule";
 import { Heading, Slider } from "@modulz/radix";
 import Messages from "./Messages";
 import Videos from "./Videos";
-import Controls from "./Controls";
+import Button from "./Button";
+import { actions } from "../app/namespaced/messages";
 const App = () => {
-  // const { state } = useApp();
+  const { state, actions } = useApp();
   return (
     <React.Fragment>
-      <Heading>Sing Along</Heading>
+      <Heading>Sin g Along</Heading>
+      <Button text="Add" onClick={actions.videos.add} />
+      <Button text="X" onClick={actions.videos.deleteAll} />
+      <Videos />
       {/* <Videos>
       Videos
       Video

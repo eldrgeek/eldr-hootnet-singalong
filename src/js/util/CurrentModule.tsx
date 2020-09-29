@@ -7,10 +7,10 @@ import { RadixProvider } from "@modulz/radix";
 
 // eslint-disable-next-line no-unused-vars
 const Nothing = () => {
-  return "The currrent module is nothing";
+  return "The currrent module is Currnet Module";
 };
 
-const CurrentModule = (Element, props) => {
+const CurrentModule = (Element, props?) => {
   const rootElement = document.getElementById("root");
   render(
     <Provider value={app}>
