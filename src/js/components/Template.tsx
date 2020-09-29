@@ -1,11 +1,10 @@
 import React from "react";
-import { CurrentModule, useApp } from "../CurrentModule";
+import { CurrentModule, useApp } from "../util/CurrentModule";
 
 const Template = () => {
   const { state, actions } = useApp();
-  return (<React.Fragment>
-    {state.title}
-    </React.Fragment>)
-}
-export default Template
+  React.useEffect(() => {}, []);
+  return <React.Fragment></React.Fragment>;
+};
+export default Template;
 CurrentModule(Template);

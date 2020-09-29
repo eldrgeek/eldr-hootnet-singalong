@@ -7,14 +7,7 @@ const App = () => {
   const [value, setValue] = React.useState(299);
   return (
     <React.Fragment>
-      <Heading>
-        <Slider
-          sx={{ width: 400 }}
-          onChange={(e) => console.log("changed", setValue(e.target.value))}
-          value={value}
-        ></Slider>
-        {state.messages.lastMessage}
-      </Heading>
+      <Heading>Sing Along</Heading>
     </React.Fragment>
   );
 };

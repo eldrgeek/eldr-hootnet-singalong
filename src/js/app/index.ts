@@ -6,19 +6,17 @@ import * as effects from "./effects";
 import { IConfig } from "overmind";
 import { createOvermind } from "overmind";
 import { merge, namespaced } from "overmind/config";
-import messages from "./messages";
 export const config = {
   onInitialize,
   state,
   actions,
   effects
 };
-console.log("messages", messages);
 export const app = createOvermind(
-  merge(
-    config
-    // ,namespaced({messages})
-  ),
+  // merge(
+  config,
+  // ,namespaced({messages})
+  // )
   {
     devtools: navigator.userAgent.match(/ CrOS /)
       ? "penguin.linux.test:3031"
