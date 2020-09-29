@@ -1,14 +1,23 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // import { Action, AsyncAction } from "overmind";
 // import { State } from "./state";
-import { actions as messageActions } from "./namespaced/messages";
-import { Actions as MessageActions } from "./namespaced/messages";
+import {
+  actions as messageActions,
+  Actions as MessageActions
+} from "./namespaced/messages";
+import {
+  actions as videoActions,
+  Actions as VideoActions
+} from "./namespaced/videos";
+
 export type Actions = {
   messages: MessageActions;
+  videos: VideoActions;
 };
 
 export const actions: Actions = {
-  messages: messageActions
+  messages: messageActions,
+  videos: videoActions
 };
 
 // import {actions as messages} from './namespaced/messages'
