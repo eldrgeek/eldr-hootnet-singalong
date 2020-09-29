@@ -10,12 +10,12 @@ const Nothing = () => {
   return "The currrent module is nothing";
 };
 
-const CurrentModule = (Element) => {
+const CurrentModule = (Element, props) => {
   const rootElement = document.getElementById("root");
   render(
     <Provider value={app}>
       <RadixProvider>
-        <Element />
+        <Element {...props} />
       </RadixProvider>
     </Provider>,
     rootElement
