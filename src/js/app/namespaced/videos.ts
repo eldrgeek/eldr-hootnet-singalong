@@ -77,10 +77,16 @@ export type State = {
   };
   index: number;
   playing: boolean;
+  _testData: Array<string>;
 };
 
 export const state: State = {
   videos: {},
   index: 0,
-  playing: true
+  playing: true,
+  _testData: [
+    "https://www.youtube.com/watch?v=o507bg_K6hs",
+    "https://www.youtube.com/watch?v=OSdGW_HBrLE",
+    "https://www.youtube.com/watch?v=8M8v7l9zsAM"
+  ]
 };

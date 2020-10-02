@@ -9,15 +9,21 @@ import {
   actions as videoActions,
   Actions as VideoActions
 } from "./namespaced/videos";
+import {
+  actions as _debuggerActions,
+  Actions as _DebuggerActions
+} from "./namespaced/_debugger";
 
 export type Actions = {
   messages: MessageActions;
   videos: VideoActions;
+  _debugger: _DebuggerActions;
 };
 
 export const actions: Actions = {
   messages: messageActions,
-  videos: videoActions
+  videos: videoActions,
+  _debugger: _debuggerActions
 };
 
 // import {actions as messages} from './namespaced/messages'

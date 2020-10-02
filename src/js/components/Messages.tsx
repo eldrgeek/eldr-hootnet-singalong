@@ -1,6 +1,6 @@
 import React from "react";
 import { CurrentModule, useApp } from "../util/CurrentModule";
-import { Heading, Container, Box } from "@modulz/radix";
+import { Container, Box } from "@material-ui/core";
 
 const useTesting = (testing, action) => {
   React.useEffect(() => {
