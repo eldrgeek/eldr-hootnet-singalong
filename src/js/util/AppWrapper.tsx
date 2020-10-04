@@ -10,7 +10,7 @@ CL("App wrapper Loaded");
 
 const Component = () => {
   const { state, actions } = useApp();
-  console.log("call component wraps");
+  // console.log("call component wraps");
   return (
     <React.Fragment>
       {state._debugger.showApp ? (

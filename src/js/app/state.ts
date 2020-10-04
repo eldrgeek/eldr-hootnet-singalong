@@ -15,7 +15,7 @@ export type State = {
 };
 //
 export const state: State = {
-  _debugger: _debugger,
-  messages: messages,
-  videos: videos
+  _debugger,
+  messages,
+  videos
 };

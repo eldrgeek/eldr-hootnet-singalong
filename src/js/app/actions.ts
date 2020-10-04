@@ -2,15 +2,15 @@
 // import { Action, AsyncAction } from "overmind";
 // import { State } from "./state";
 import {
-  actions as messageActions,
+  actions as messages,
   Actions as MessageActions
 } from "./namespaced/messages";
 import {
-  actions as videoActions,
+  actions as videos,
   Actions as VideoActions
 } from "./namespaced/videos";
 import {
-  actions as _debuggerActions,
+  actions as _debugger,
   Actions as _DebuggerActions
 } from "./namespaced/_debugger";
 
@@ -21,9 +21,9 @@ export type Actions = {
 };
 
 export const actions: Actions = {
-  messages: messageActions,
-  videos: videoActions,
-  _debugger: _debuggerActions
+  messages,
+  videos,
+  _debugger
 };
 
 // import {actions as messages} from './namespaced/messages'
