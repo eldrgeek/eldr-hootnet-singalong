@@ -14,7 +14,8 @@ CL('Icon button registered ');
 
 const Component = ({
 	icon = faCoffee,
-	onClick = () => console.log('connect this button')
+	onClick = () => console.log('connect this button'),
+	disabled = false
 
 	// icon=<QuestionMarkIcon/>
 }) => {
@@ -29,11 +30,8 @@ const Component = ({
 			{/* <Hover> */}
 			{/* {(isHovered) => ( */}
 			{/* // <Box sx={{ height: 9, bg: isHovered ? 'red600' : 'blue600' }}></Box> */}
-			<IconButton color="primary" onClick={() => onClick()}>
+			<IconButton disabled={disabled} color="primary" onClick={() => onClick()}>
 				<FontAwesomeIcon icon={icon} />
-				<DeleteIcon
-				//  style={{ background:blue[500], color: green[100] }}
-				/>
 			</IconButton>
 
 			{/* )}

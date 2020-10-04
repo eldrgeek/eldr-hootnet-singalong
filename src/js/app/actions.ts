@@ -2,28 +2,28 @@
 // import { Action, AsyncAction } from "overmind";
 // import { State } from "./state";
 import {
-  actions as messages,
-  Actions as MessageActions
-} from "./namespaced/messages";
+	actions as messages,
+	Actions as MessageActions
+} from './namespaced/messages';
 import {
-  actions as videos,
-  Actions as VideoActions
-} from "./namespaced/videos";
+	actions as videos,
+	Actions as VideoActions
+} from './namespaced/videos';
 import {
-  actions as _debugger,
-  Actions as _DebuggerActions
-} from "./namespaced/_debugger";
+	actions as _debugger,
+	Actions as _DebuggerActions
+} from './namespaced/_debugger';
 
 export type Actions = {
-  messages: MessageActions;
-  videos: VideoActions;
-  _debugger: _DebuggerActions;
+	messages: MessageActions;
+	videos: VideoActions;
+	_debugger: _DebuggerActions;
 };
 
 export const actions: Actions = {
-  messages,
-  videos,
-  _debugger
+	messages,
+	videos,
+	_debugger
 };
 
 // import {actions as messages} from './namespaced/messages'

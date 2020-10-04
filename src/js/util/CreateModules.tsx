@@ -17,7 +17,7 @@ const spec = {
 	types: 'Registration',
 	state: 'registration,showApp',
 	actions: 'register,toggleApp',
-	components: 'Button,Box',
+	components: 'IconButton',
 	styled: 'Button'
 };
 
