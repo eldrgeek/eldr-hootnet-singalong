@@ -14,7 +14,7 @@ const Nothing = () => {
 
 const register = (path, element, show) => {
 	const name = path.match(/(\w*)\./)[1];
-	app.actions._debugger.register({ name, element, show });
+	app.actions._debugger.register({ name, element, show, path });
 };
 const useRegistration = (actions, path, element, show) => {
 	React.useEffect(() => {
