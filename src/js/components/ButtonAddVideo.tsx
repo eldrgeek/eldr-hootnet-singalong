@@ -1,8 +1,8 @@
 import React from 'react';
 import { CurrentModule, useApp, register } from '../util/CurrentModule';
+// import { IconButton } from '@material-ui/core';
 import ButtonBase from './ButtonBase';
-
-import { faUndo } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const CL = (...args) => {
 	console.log(...args, `(/src/js/util/CreateModules.tsx)`);
@@ -13,10 +13,10 @@ const Component = () => {
 	return (
 		<React.Fragment>
 			<ButtonBase
-				buttonColor="red"
-				disabled={state.videos.location === 0 || state.videos.playing}
-				icon={faUndo}
-				onClick={actions.videos.rewind}
+				disabled={state.videos.playing || state.videos.addDialogOpen}
+				onClick={actions.videos.toggleAddDialog}
+				buttonColor="blue"
+				icon={faPlus}
 			/>
 		</React.Fragment>
 	);

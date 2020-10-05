@@ -15,7 +15,7 @@ const Component = () => {
 			<ButtonBase
 				disabled={state.videos.recording}
 				onClick={actions.videos.toggleCameraOn}
-				buttonColor="blue"
+				buttonColor="green"
 				icon={state.videos.cameraOn ? faVideoSlash : faVideo}
 			/>
 		</React.Fragment>
@@ -23,5 +23,5 @@ const Component = () => {
 };
 
 export default Component;
-CurrentModule(Component);
+// CurrentModule(Component);
 register(__filename, Component, false);

@@ -44,5 +44,5 @@ const Component = ({
 // export default Component;
 
 export default Component;
-CurrentModule(Component);
+// CurrentModule(Component);
 register(__filename, Component, true);

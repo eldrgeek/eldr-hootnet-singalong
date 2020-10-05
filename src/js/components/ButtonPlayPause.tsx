@@ -13,7 +13,7 @@ const Component = () => {
 	return (
 		<React.Fragment>
 			<ButtonBase
-				buttonColor="red"
+				buttonColor="orange"
 				disabled={state.videos.recording}
 				icon={state.videos.playing ? faPause : faPlay}
 				onClick={actions.videos.togglePlay}
@@ -23,5 +23,5 @@ const Component = () => {
 };
 
 export default Component;
-CurrentModule(Component);
+// CurrentModule(Component);
 register(__filename, Component, false);

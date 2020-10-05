@@ -12,7 +12,7 @@ if (module.hot) {
 			// './js/util/CreateModules'
 		],
 		() => {
-			console.log('loading');
+			// console.log('loading');
 			CurrentModule(AppWrapper);
 		}
 	);

@@ -1,11 +1,9 @@
 import React from 'react';
 import { CurrentModule, useApp, register } from '../util/CurrentModule';
 import { IconButton, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const CL = (...args) => {
 	console.log(...args, `(${__filename})`);
@@ -43,5 +41,5 @@ const Component = ({
 // export default Component;
 
 export default Component;
-CurrentModule(Component);
+// CurrentModule(Component);
 register(__filename, Component, true);

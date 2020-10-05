@@ -8,15 +8,20 @@ import ButtonCamera from './ButtonCamera';
 import ButtonPlayPause from './ButtonPlayPause';
 import ButtonRecordStop from './ButtonRecordStop';
 import ButtonRewind from './ButtonRewind';
+import VideoMonitor from './VideoMonitor';
+import ButtonAddVideo from './ButtonAddVideo';
+import AddVideoDialog from './AddVideoDialog';
 
-import Text from './Text';
-import { faPlus, faCamera, faUpload } from '@fortawesome/free-solid-svg-icons';
-import { actions } from '../app/namespaced/messages';
+const CL = (...args) => {
+	console.log(...args, `(${__filename})`);
+};
 const App = () => {
-	const { state, actions } = useApp();
+	// const { state, actions } = useApp();
 	return (
 		<React.Fragment>
 			This is the app for me and
+			<br />
+			<ButtonAddVideo />
 			<br />
 			<ButtonCamera />
 			<br />
@@ -26,13 +31,10 @@ const App = () => {
 			<br />
 			<ButtonRewind />
 			<br />
-			{/* <IconButton icon={faCamera} /> */}
-			{/* <br /> */}
-			{/* <Text text={`Enter Video URL or click button to upload`} />{' '} */}
-			{/* <IconButton icon={faUpload} /> */}
-			<Input value={state.videos._testData[0]} placeholder="Enter video URL" />
-			{/* <Button text={<PlusIcon/>} onClick={actions.videos.add} /> */}
-			{/* <Button text={<CameraIcon />} onClick={actions.videos.deleteAll} /> */}
+			<AddVideoDialog />
+			<br />
+			<VideoMonitor />
+			<br />
 			<Videos />
 			{/* <Videos>
       Videos
@@ -55,4 +57,4 @@ const App = () => {
 	);
 };
 export default App;
-CurrentModule(App);
+// CurrentModule(App);

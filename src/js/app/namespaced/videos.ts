@@ -4,11 +4,14 @@ import { CurrentModule, useApp, app } from '../../util/CurrentModule';
 
 export type Actions = {
 	_test: Action;
+	setVideoTitle: Action<string>;
+	setLocation: Action<number>;
 	add: Action<string>;
 	delete: Action<string>;
 	mute: Action<string>;
 	toggleCameraOn: Action;
 	toggleRecording: Action;
+	toggleAddDialog: Action;
 	togglePlay: Action;
 	markAll: Action;
 	unmarkAll: Action;
@@ -35,7 +38,7 @@ export const actions: Actions = {
 	_test: async ({ state, actions }) => {
 		const a = actions.videos;
 		const s = state.videos;
-		console.log('Test called', state); //Object.keys(s.videos))
+		// console.log('Test called', state); //Object.keys(s.videos))
 		// s.videos.videos = {}
 
 		// if (Object.keys(s.videos).length <= 2) {
@@ -58,10 +61,20 @@ export const actions: Actions = {
 		};
 		s.videos[v.id] = v;
 	},
+	setLocation: ({ state }, location) => {
+		state.videos.location = location;
+	},
+	setVideoTitle: ({ state }, title) => {
+		state.videos.videoTitle = title;
+	},
+	toggleAddDialog: ({ state }) => {
+		state.videos.addDialogOpen = !state.videos.addDialogOpen;
+	},
 	deleteAll: ({ state, actions }) => {
 		console.log('Delete all');
 		state.videos.videos = {};
 	},
+
 	toggleCameraOn: ({ state, actions }) => {
 		state.videos.cameraOn = !state.videos.cameraOn;
 		state.videos.location = 0;
@@ -80,9 +93,9 @@ export const actions: Actions = {
 	delete: ({ state, actions }) => {},
 	mute: ({ state, actions }) => {},
 	togglePlay: ({ state, actions }) => {
-		if (!state.videos.playing) {
-			state.videos.location = 0.1;
-		}
+		// if (!state.videos.playing) {
+		// 	state.videos.location = 0.1;
+		// }
 		state.videos.playing = !state.videos.playing;
 	},
 
@@ -103,6 +116,8 @@ export type State = {
 	cameraOn: boolean;
 	recording: boolean;
 	location: number;
+	addDialogOpen: boolean;
+	videoTitle: string;
 };
 
 export const state: State = {
@@ -116,5 +131,8 @@ export const state: State = {
 	],
 	cameraOn: false,
 	recording: false,
-	location: 0
+	location: 0,
+	addDialogOpen: false,
+	// videoTitle: 'https://www.youtube.com/watch?v=OSdGW_HBrLE'
+	videoTitle: 'https://www.youtube.com/watch?v=o507bg_K6hs'
 };

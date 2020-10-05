@@ -7,6 +7,9 @@ blobber.stopBlobber() // stop capturing blobs
 
 */
 // import { app } from '../app'
+const CL = (...args) => {
+	console.log(...args, __filename);
+};
 class Blobber {
 	stats: { constructed: any; created: any; started: any; firstBlob: any };
 	stream: MediaStream;
@@ -28,12 +31,13 @@ class Blobber {
 			firstBlob: null
 		};
 		this.getStat('constructed');
-
+		CL('CONSTRUCTED');
 		this.stream = stream;
 		this.nBlobs = 0;
 		this.blobs = [];
 		this.boundStop = this.recorderStop.bind(this);
 		this.boundDataAvailable = this.handleDataAvailable.bind(this);
+		CL('this stream', this.stream);
 		if (this.stream) this.createRecorder();
 		this.index = 0;
 	}
@@ -82,6 +86,7 @@ class Blobber {
 		}
 	}
 	createRecorder() {
+		CL('CALLED CREATE');
 		let options = { mimeType: 'video/webm;codecs=opus,vp9' };
 		if (!MediaRecorder.isTypeSupported(options.mimeType)) {
 			console.error(`${options.mimeType} is not supported`);
@@ -105,6 +110,7 @@ class Blobber {
 			// setError(`Exception while creating MediaRecorder: ${JSON.stringify(e)}`);
 			return;
 		}
+		CL('created recorder');
 		this.getStat('created');
 	}
 	start(interval = 100) {
@@ -116,7 +122,7 @@ class Blobber {
 			this.mediaRecorder.start(interval);
 			// console.log("MediaRecorder started", mediaRecorder);
 		} catch (e) {
-			console.log(Error, e.toString());
+			console.log(Error, 'cannot start recorder', e.toString());
 		}
 	}
 	stopBlobber() {

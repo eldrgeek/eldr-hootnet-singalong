@@ -26,6 +26,6 @@ const Video = ({
 	);
 };
 export default Video;
-CurrentModule(Video);
+// CurrentModule(Video);s
 
 register(__filename, Video, true);

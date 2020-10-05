@@ -6,7 +6,6 @@ import { faPlus, faCamera, faUpload } from '@fortawesome/free-solid-svg-icons';
 const CL = (...args) => {
 	console.log(...args, `(${__filename})`);
 };
-CL('App wrapper Loaded');
 
 const Component = () => {
 	const { state, actions } = useApp();

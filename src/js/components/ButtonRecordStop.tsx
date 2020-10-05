@@ -10,6 +10,7 @@ const CL = (...args) => {
 
 const Component = () => {
 	const { actions, state } = useApp();
+	const doRecording = () => {};
 	return (
 		<React.Fragment>
 			<ButtonBase
@@ -26,5 +27,5 @@ const Component = () => {
 };
 
 export default Component;
-CurrentModule(Component);
+// CurrentModule(Component);
 register(__filename, Component, false);

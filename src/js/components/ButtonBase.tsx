@@ -12,13 +12,15 @@ const CL = (...args) => {
 
 const StyledButton = styled(IconButton)`
 	/* color: ${(props) => props.inputColor || 'palevioletred'}; */
-  color: ${(props) => props.buttonColor || 'palevioletred'};
+  &&{
+	color: ${(props) => props.buttonColor || 'blue'};
 	border: 1px solid black;
 	box-shadow: 0 4px 6px rgba(50, 50, 93, 0.4), 0 1px 3px rgba(0, 0, 0, 0.08);
 	padding: 5px 5px;
-  & .MuiIconButton-root {
+  /* & .MuiIconButton-root {
     color: red;
-  }
+  } */
+	}
 	/* border: 2px solid black; */
 	&:hover {
 		background-color: #eee;
@@ -50,5 +52,5 @@ const Component = ({
 };
 
 export default Component;
-CurrentModule(Component);
+// CurrentModule(Component);
 register(__filename, Component, true);

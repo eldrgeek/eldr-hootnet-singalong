@@ -1,4 +1,4 @@
-const getCameraStream = async (constraints) => {
+const getCameraStream = async (constraints?) => {
 	if (!constraints)
 		constraints = {
 			audio: true,
