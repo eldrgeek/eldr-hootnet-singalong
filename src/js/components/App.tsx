@@ -31,10 +31,10 @@ const App = () => {
         <ButtonDownload />
       </div>
       <AddVideoDialog />
+      <VideoMonitor />
       <br />
       <Videos />
       <br />
-      <VideoMonitor />
       {/* <Videos>
       Videos
       Video
