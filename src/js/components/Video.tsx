@@ -13,7 +13,15 @@ const Video = ({ id }) => {
 	const { state, actions } = useApp();
 	const videoRef = React.useRef({});
 	React.useEffect(() => {
-		CL(id, state.videos.videos);
+		// CL(id, state.videos.videos);
+		if (state.videos.videos[id].URL.match(/^blob:/)) {
+			CL('BlOB Found', state.videos.videos[id].URL);
+			actions.videos.setLoadingState({ id, newState: 'loaded' });
+			return;
+		}
+	}, []);
+	React.useEffect(() => {
+		// CL(id, state.videos.videos);
 		if (state.videos.videos[id].rewinding) {
 			videoRef.current.seekTo(0);
 			actions.videos.clearRewinding(id);
@@ -21,6 +29,7 @@ const Video = ({ id }) => {
 	}, [state.videos.videos[id].rewinding]); //eslint-disable-line
 	const handlePlay = () => {
 		if (state.videos.videos[id].loadingState !== 'initial') return;
+
 		//started from the device
 		actions.videos.setLoadingState({ id, newState: 'loading' });
 		setTimeout(() => {

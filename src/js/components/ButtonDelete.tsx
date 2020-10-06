@@ -17,7 +17,13 @@ const Component = ({ id }) => {
 				buttoncolor="gray"
 				disabled={state.videos.recording}
 				icon={faTrash}
-				onClick={() => actions.videos.delete(id)}
+				onClick={() => {
+					const url = state.videos.videos[id].URL;
+					if (url.match(/^blob:/)) {
+						URL.revokeObjectURL(url);
+					}
+					actions.videos.delete(id);
+				}}
 			/>
 		</React.Fragment>
 	);

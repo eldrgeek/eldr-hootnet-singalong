@@ -1,12 +1,14 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-const StreamRecorder = ({ recordedBlobs, disabled }) => {
+//eslint-disable-next-line
+const CL = (...args) => {
+	console.log(...args, `(/src/js/util/CreateModules.tsx)`);
+};
+const Component = ({ url, disabled }) => {
 	const [error, setError] = React.useState('');
 
 	const clickDownload = (e) => {
-		const blob = new Blob(recordedBlobs, { type: 'video/webm' });
-		const url = window.URL.createObjectURL(blob);
 		const a = document.createElement('a');
 		a.style.display = 'none';
 		a.href = url;
@@ -15,7 +17,7 @@ const StreamRecorder = ({ recordedBlobs, disabled }) => {
 		a.click();
 		setTimeout(() => {
 			document.body.removeChild(a);
-			window.URL.revokeObjectURL(url);
+			// window.URL.revokeObjectURL(url);
 		}, 100);
 	};
 
@@ -28,4 +30,5 @@ const StreamRecorder = ({ recordedBlobs, disabled }) => {
 		</React.Fragment>
 	);
 };
-export default StreamRecorder;
+export default Component;
+register(__filename, Component, false);
