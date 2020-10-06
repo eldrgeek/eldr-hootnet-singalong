@@ -1,40 +1,48 @@
-import { Action } from "../index";
-import React from "react";
-import { CurrentModule, useApp, app } from "../../util/CurrentModule";
+import { Action } from '../index';
+import React from 'react'; //eslint-disable-line
+// import {  useApp, app } from '../../util/CurrentModule';
 
-export type Element = () => JSX.Element;
+export type Element = () => JSX.Element; //eslint-disable-line
 type Registration = {
-  name: String;
-  element: Element;
-  show: boolean;
-  after?: string;
+	name: string;
+	element: Element;
+	path: string;
+	show: boolean;
+	after?: string;
 };
 export type Actions = {
-  register: Action<Registration>;
-  toggleApp: Action;
+	register: Action<Registration>;
+	toggleApp: Action;
+	toggleShowAll: Action;
 };
 
 export const actions: Actions = {
-  register: ({ state, actions }, { name, element, show = false }) => {
-    const registration = {
-      name,
-      element,
-      show
-    };
-    state._debugger.registrations[name] = registration;
-  },
-  toggleApp: ({ state }) => {
-    state._debugger.showApp = !state._debugger.showApp;
-  }
+	register: ({ state, actions }, { name, element, path, show = false }) => {
+		const registration = {
+			name,
+			element,
+			path,
+			show
+		};
+		state._debugger.registrations[name] = registration;
+	},
+	toggleApp: ({ state }) => {
+		state._debugger.showApp = !state._debugger.showApp;
+	},
+	toggleShowAll: ({ state }) => {
+		state._debugger.showAll = !state._debugger.showAll;
+	}
 };
 export type State = {
-  registrations: {
-    [id: string]: Registration;
-  };
-  showApp: boolean;
+	registrations: {
+		[id: string]: Registration;
+	};
+	showApp: boolean;
+	showAll: boolean;
 };
 
 export const state: State = {
-  registrations: {},
-  showApp: true
+	registrations: {},
+	showApp: true,
+	showAll: true
 };

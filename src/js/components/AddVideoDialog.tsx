@@ -22,6 +22,7 @@ const Component = () => {
 	return (
 		<React.Fragment>
 			<Text text={`Enter Video URL`} />
+			<br />
 			<Input
 				onChange={(e) => actions.videos.setVideoTitle(e.target.value)}
 				value={state.videos.videoTitle}

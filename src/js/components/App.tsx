@@ -20,22 +20,18 @@ const App = () => {
 	return (
 		<React.Fragment>
 			This is the app for me and
-			<br />
-			<ButtonAddVideo />
-			<br />
-			<ButtonCamera />
-			<br />
-			<ButtonPlayPause />
-			<br />
-			<ButtonRecordStop />
-			<br />
-			<ButtonRewind />
-			<br />
+			<div>
+				<ButtonAddVideo />
+				<ButtonCamera />
+				<ButtonPlayPause />
+				<ButtonRecordStop />
+				<ButtonRewind />
+			</div>
 			<AddVideoDialog />
 			<br />
-			<VideoMonitor />
-			<br />
 			<Videos />
+			<br />
+			<VideoMonitor />
 			{/* <Videos>
       Videos
       Video

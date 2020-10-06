@@ -1,5 +1,5 @@
-import React from 'react';
-import { CurrentModule, useApp, register } from '../util/CurrentModule';
+import React from 'react'; //eslint-disable-line
+import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslint-disable-line
 import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
 
@@ -13,7 +13,7 @@ const CL = (...args) => {
 const StyledButton = styled(IconButton)`
 	/* color: ${(props) => props.inputColor || 'palevioletred'}; */
   &&{
-	color: ${(props) => props.buttonColor || 'blue'};
+	color: ${(props) => props.buttoncolor || 'blue'};
 	border: 1px solid black;
 	box-shadow: 0 4px 6px rgba(50, 50, 93, 0.4), 0 1px 3px rgba(0, 0, 0, 0.08);
 	padding: 5px 5px;
@@ -33,14 +33,14 @@ const Component = ({
 	onClick = () => CL('make this work'),
 	icon = faCamera,
 	color = 'red',
-	buttonColor = 'green'
+	buttoncolor = 'green'
 }) => {
-	const { actions, state } = useApp();
+	const { actions, state } = useApp(); //eslint-disable-line
 	return (
 		<React.Fragment>
 			<StyledButton
 				// color={color}
-				buttonColor={buttonColor}
+				buttoncolor={buttoncolor}
 				disabled={disabled}
 				color="primary"
 				onClick={() => onClick()}

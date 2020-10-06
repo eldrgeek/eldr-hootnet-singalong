@@ -5,11 +5,11 @@ import { Link } from '@material-ui/core';
 import ButtonDebugger from './ButtonDebugger';
 import ButtonShowAll from './ButtonShowAll';
 import { dispatch, actions } from 'codesandbox-api';
-const openFile = (file) => {
-	dispatch(actions.editor.openModule(file));
-};
 const CL = (...args) => {
 	console.log(...args, `(${__filename})`);
+};
+const openFile = (file) => {
+	dispatch(actions.editor.openModule(file, 1));
 };
 
 const Component = () => {
@@ -29,7 +29,9 @@ const Component = () => {
 						const EL = state._debugger.registrations[key].element;
 						return (
 							<div style={{ border: '1px solid black' }} key={key}>
+								<EL key={key} />
 								<Link
+									style={{ marginLeft: '4px' }}
 									component="button"
 									variant="body2"
 									onClick={() => {
@@ -40,7 +42,6 @@ const Component = () => {
 									{state._debugger.registrations[key].name}
 								</Link>
 								<br />
-								<EL key={key} />{' '}
 							</div>
 						);
 					})}

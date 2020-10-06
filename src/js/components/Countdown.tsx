@@ -1,5 +1,5 @@
-import React from 'react';
-import { H1 } from './components/Typography';
+import React from 'react'; //eslint-disable-line
+// import { H1 } from './components/Typography';
 
 const Countdown = ({ count = 5 }) => {
 	console.log('countdown');

@@ -1,12 +1,16 @@
 import { Action } from '../index';
-import React from 'react';
-import { CurrentModule, useApp, app } from '../../util/CurrentModule';
+import React from 'react'; //eslint-disable-line
+import { CurrentModule, useApp, app } from '../../util/CurrentModule'; //eslint-disable-line
 
 export type Actions = {
 	_test: Action;
 	setVideoTitle: Action<string>;
-	setLocation: Action<number>;
-	add: Action<string>;
+	clearRewinding: Action<string>;
+	setLoadingState: Action<{ id: string; state: string }>;
+	setAttr: Action<{ attr: string; value: any }>;
+	setDelayTime: Action<{ id: string; time: number }>;
+	setStartTime: Action<{ id: string; time: number }>;
+	add: Action<string, string>;
 	delete: Action<string>;
 	mute: Action<string>;
 	toggleCameraOn: Action;
@@ -17,6 +21,7 @@ export type Actions = {
 	unmarkAll: Action;
 	rewind: Action;
 	deleteAll: Action;
+	setEnabled: Action<string>;
 	_applyAll: Action<{ id: string; cb: Action }>;
 };
 
@@ -26,9 +31,16 @@ type VideoInfo = {
 	blobs?: Array<any>;
 	muted: boolean;
 	soundLevel: number;
+	enabled: boolean;
+	startTime: number;
+	delayTime: number;
+	rewinding: boolean;
+	loadingState: string;
 };
 
 const delay = async (timeout) => {
+	//eslint-disable-line
+	//eslint-disable-line
 	return new Promise((resolve) => {
 		setTimeout(resolve, timeout);
 	});
@@ -36,8 +48,8 @@ const delay = async (timeout) => {
 
 export const actions: Actions = {
 	_test: async ({ state, actions }) => {
-		const a = actions.videos;
-		const s = state.videos;
+		const a = actions.videos; //eslint-disable-line
+		const s = state.videos; //eslint-disable-line
 		// console.log('Test called', state); //Object.keys(s.videos))
 		// s.videos.videos = {}
 
@@ -51,19 +63,42 @@ export const actions: Actions = {
 		// a.pauseAll();
 		// await delay(1000);
 	},
+	setLoadingState: ({ state }, { id, newState }) => {
+		state.videos.videos[id].loadingState = newState;
+	},
+	clearRewinding: ({ state }, id) => {
+		state.videos.videos[id].rewinding = false;
+	},
+	setAttr: ({ state, actions }, { attr, value }) => {
+		Object.keys(state.videos.videos).forEach((key) => {
+			state.videos.videos[key][attr] = value;
+		});
+	},
+	setEnabled: ({ state }, id) => {
+		state.videos.videos[id].enabled = true;
+	},
 	add: ({ state, actions }, URL) => {
 		const s = state.videos;
 		const v: VideoInfo = {
 			id: 'S' + s.index++,
 			URL,
 			muted: false,
-			soundLevel: 1
+			soundLevel: 1,
+			startTime: 0,
+			delayTime: 0,
+			enabled: false,
+			loadingState: 'initial'
 		};
 		s.videos[v.id] = v;
+		return v.id;
 	},
-	setLocation: ({ state }, location) => {
-		state.videos.location = location;
+	setStartTime: ({ state }, { id, time }) => {
+		state.videos.videos[id].startTime = time;
 	},
+	setDelayTime: ({ state }, { id, time }) => {
+		state.videos.videos[id].delayTime = time;
+	},
+
 	setVideoTitle: ({ state }, title) => {
 		state.videos.videoTitle = title;
 	},
@@ -77,7 +112,6 @@ export const actions: Actions = {
 
 	toggleCameraOn: ({ state, actions }) => {
 		state.videos.cameraOn = !state.videos.cameraOn;
-		state.videos.location = 0;
 	},
 	toggleRecording: ({ state, actions }) => {
 		if (!state.videos.recording) {
@@ -97,12 +131,14 @@ export const actions: Actions = {
 		// 	state.videos.location = 0.1;
 		// }
 		state.videos.playing = !state.videos.playing;
+		state.videos.hasPlayed = true;
 	},
 
 	markAll: ({ state, actions }) => {},
 	unmarkAll: ({ state, actions }) => {},
 	rewind: ({ state, actions }) => {
-		state.videos.location = 0;
+		state.videos.hasPlayed = false;
+		actions.videos.setAttr({ attr: 'rewinding', value: true });
 	},
 	_applyAll: ({ state, actions }) => {}
 };
@@ -118,6 +154,7 @@ export type State = {
 	location: number;
 	addDialogOpen: boolean;
 	videoTitle: string;
+	hasPlayed: boolean;
 };
 
 export const state: State = {
@@ -133,6 +170,7 @@ export const state: State = {
 	recording: false,
 	location: 0,
 	addDialogOpen: false,
+	hasPlayed: false,
 	// videoTitle: 'https://www.youtube.com/watch?v=OSdGW_HBrLE'
 	videoTitle: 'https://www.youtube.com/watch?v=o507bg_K6hs'
 };

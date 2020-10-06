@@ -1,5 +1,5 @@
-import React from 'react';
-import { CurrentModule, useApp, register } from '../util/CurrentModule';
+import React from 'react'; //eslint-disable-line
+import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslint-disable-line
 import { Button } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,10 +12,10 @@ const Video = ({
 	text = <FontAwesomeIcon icon={faCoffee} />,
 	onClick = () => console.log('connect this button')
 }) => {
-	const { state, actions } = useApp();
+	const { state, actions } = useApp(); //eslint-disable-line
 	React.useEffect(() => {
 		actions.videos._test();
-	}, []);
+	}, []); //eslint-disable-line
 	return (
 		<React.Fragment>
 			<IconButton color="primary">

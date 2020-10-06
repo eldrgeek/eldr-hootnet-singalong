@@ -1,51 +1,68 @@
-import React from 'react';
-import { CurrentModule, useApp, register } from '../util/CurrentModule';
-import { Flex, Box, Text, Button } from '@modulz/radix';
+import React from 'react'; //eslint-disable-line
+import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslint-disable-line
 import ReactPlayer from 'react-player';
-const testURL = 'https://www.youtube.com/watch?v=ysz5S6PUM-U';
+
 const CL = (...args) => {
+	//eslint-disable-line
+	//esliint-disable-line
 	console.log(...args, `(${__filename})`);
 };
-const Video = ({ url = testURL }) => {
+const Video = ({ id }) => {
 	const { state, actions } = useApp();
 	const videoRef = React.useRef({});
-	const [isLoaded, setLoaded] = React.useState(false);
 	React.useEffect(() => {
-		if (state.videos.playing) return;
-		try {
-			if (videoRef.current && videoRef.current.seekTo && isLoaded)
-				videoRef.current.seekTo(0);
-		} catch (e) {
-			CL('seek', videoRef.current, videoRef.current.seekTo);
+		CL(id, state.videos.videos);
+		if (state.videos.videos[id].rewinding) {
+			videoRef.current.seekTo(0);
+			actions.videos.clearRewinding(id);
 		}
-	}, [state.videos.location, videoRef]);
+	}, [state.videos.videos[id].rewinding]); //eslint-disable-line
 	const handlePlay = () => {
-		CL('hangle play');
-		if (state.videos.playing) return;
-		if (isLoaded) return;
+		if (state.videos.videos[id].loadingState !== 'initial') return;
 		//started from the device
-		actions.videos.togglePlay(); // start playing
+		actions.videos.setLoadingState({ id, newState: 'loading' });
 		setTimeout(() => {
-			actions.videos.togglePlay();
-			actions.videos.setLocation(0);
-			setLoaded(true);
-		}, 200);
+			actions.videos.setLoadingState({ id, newState: 'loaded' });
+			videoRef.current.seekTo(0);
+		}, 10);
 	};
 	return (
 		<React.Fragment>
 			<ReactPlayer
+				style={{
+					opacity: state.videos.videos[id].loadingState === 'loaded' ? 1 : 0.2
+				}}
 				controls={true}
 				height={'50%'}
 				width={'50%'}
-				url={url}
+				url={state.videos.videos[id].URL}
 				ref={videoRef}
-				playing={state.videos.playing}
+				playing={
+					state.videos.videos[id].loadingState === 'loading' ||
+					(state.videos.videos[id].loadingState === 'loaded' &&
+						state.videos.playing)
+				}
 				onPlay={handlePlay}
-				onProgress={(e) => actions.videos.setLocation(e.playedSeconds)}
+				// onProgress={(e) => actions.videos.setLocation(e.playedSeconds)}
 			/>
 		</React.Fragment>
 	);
 };
-export default Video;
+const testURL = 'https://www.youtube.com/watch?v=o507bg_K6hs';
+const VideoWrapper = ({ id }) => {
+	CL('WRAPPER');
+	const { state, actions } = useApp();
+	if (id) return <Video id={id} />;
+	const keys = Object.keys(state.videos.videos);
+
+	if (keys.length > 0) {
+		CL('calling with video in array ', keys[0]);
+		return <Video id={keys[0]} />;
+	}
+	const newKey = actions.videos.add(testURL);
+	CL('Call video with ', newKey);
+	return <Video id={newKey} />;
+};
+export default VideoWrapper;
 // CurrentModule(Video);
-// register(__filename, Video, true);
+register(__filename, VideoWrapper, true);

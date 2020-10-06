@@ -1,9 +1,10 @@
-import React from 'react';
-import { CurrentModule, useApp, register } from '../util/CurrentModule';
+import React from 'react'; //eslint-disable-line
+import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslint-disable-line
 import ButtonBase from './ButtonBase';
 
 import { faUndo } from '@fortawesome/free-solid-svg-icons';
 
+//eslint-disable-next-line
 const CL = (...args) => {
 	console.log(...args, `(/src/js/util/CreateModules.tsx)`);
 };
@@ -13,8 +14,8 @@ const Component = () => {
 	return (
 		<React.Fragment>
 			<ButtonBase
-				buttonColor="red"
-				disabled={state.videos.location === 0 || state.videos.playing}
+				buttoncolor="red"
+				disabled={!state.videos.hasPlayed || state.videos.playing}
 				icon={faUndo}
 				onClick={actions.videos.rewind}
 			/>
