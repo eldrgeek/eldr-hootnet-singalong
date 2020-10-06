@@ -1,6 +1,8 @@
 import React from 'react'; //eslint-disable-line
 import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslint-disable-line
 import ReactPlayer from 'react-player';
+import ButtonDownload from './ButtonDownload';
+import ButtonDelete from './ButtonDelete';
 
 const CL = (...args) => {
 	//eslint-disable-line
@@ -45,22 +47,20 @@ const Video = ({ id }) => {
 				onPlay={handlePlay}
 				// onProgress={(e) => actions.videos.setLocation(e.playedSeconds)}
 			/>
+			<ButtonDownload id={id} />
+			<ButtonDelete id={id} />
 		</React.Fragment>
 	);
 };
 const testURL = 'https://www.youtube.com/watch?v=o507bg_K6hs';
 const VideoWrapper = ({ id }) => {
-	CL('WRAPPER');
 	const { state, actions } = useApp();
 	if (id) return <Video id={id} />;
 	const keys = Object.keys(state.videos.videos);
-
 	if (keys.length > 0) {
-		CL('calling with video in array ', keys[0]);
 		return <Video id={keys[0]} />;
 	}
 	const newKey = actions.videos.add(testURL);
-	CL('Call video with ', newKey);
 	return <Video id={newKey} />;
 };
 export default VideoWrapper;

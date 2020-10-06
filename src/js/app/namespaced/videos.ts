@@ -124,7 +124,9 @@ export const actions: Actions = {
 			state.videos.cameraOn = false;
 		}
 	},
-	delete: ({ state, actions }) => {},
+	delete: ({ state, actions }, id) => {
+		delete state.videos.videos[id];
+	},
 	mute: ({ state, actions }) => {},
 	togglePlay: ({ state, actions }) => {
 		// if (!state.videos.playing) {
