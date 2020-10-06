@@ -1,38 +1,41 @@
-import React from 'react';
-import { CurrentModule, useApp } from '../util/CurrentModule';
-import Messages from './Messages';
-import Videos from './Videos';
-import IconButton from './IconButton';
-import Input from './Input';
-import ButtonCamera from './ButtonCamera';
-import ButtonPlayPause from './ButtonPlayPause';
-import ButtonRecordStop from './ButtonRecordStop';
-import ButtonRewind from './ButtonRewind';
-import VideoMonitor from './VideoMonitor';
-import ButtonAddVideo from './ButtonAddVideo';
-import AddVideoDialog from './AddVideoDialog';
-
+import React from "react";
+import { CurrentModule, useApp } from "../util/CurrentModule";
+import Messages from "./Messages";
+import Videos from "./Videos";
+import IconButton from "./IconButton";
+import Input from "./Input";
+import ButtonCamera from "./ButtonCamera";
+import ButtonPlayPause from "./ButtonPlayPause";
+import ButtonRecordStop from "./ButtonRecordStop";
+import ButtonRewind from "./ButtonRewind";
+import VideoMonitor from "./VideoMonitor";
+import ButtonAddVideo from "./ButtonAddVideo";
+import AddVideoDialog from "./AddVideoDialog";
+import ButtonUpload from "./ButtonUpload";
+import ButtonDownload from "./ButtonDownload";
 const CL = (...args) => {
-	console.log(...args, `(${__filename})`);
+  console.log(...args, `(${__filename})`);
 };
 const App = () => {
-	// const { state, actions } = useApp();
-	return (
-		<React.Fragment>
-			This is the app for me and
-			<div>
-				<ButtonAddVideo />
-				<ButtonCamera />
-				<ButtonPlayPause />
-				<ButtonRecordStop />
-				<ButtonRewind />
-			</div>
-			<AddVideoDialog />
-			<br />
-			<Videos />
-			<br />
-			<VideoMonitor />
-			{/* <Videos>
+  // const { state, actions } = useApp();
+  return (
+    <React.Fragment>
+      HootNet Singalong
+      <div>
+        <ButtonAddVideo />
+        <ButtonCamera />
+        <ButtonPlayPause />
+        <ButtonRecordStop />
+        <ButtonRewind />
+        <ButtonUpload />
+        <ButtonDownload />
+      </div>
+      <AddVideoDialog />
+      <br />
+      <Videos />
+      <br />
+      <VideoMonitor />
+      {/* <Videos>
       Videos
       Video
         ReactPlayer
@@ -48,9 +51,9 @@ const App = () => {
       Button: RECORD
       Button: REWiND
       Button: CAMERA" */}
-			{/* <Messages /> */}
-		</React.Fragment>
-	);
+      {/* <Messages /> */}
+    </React.Fragment>
+  );
 };
 export default App;
 // CurrentModule(App);

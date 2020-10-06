@@ -120,8 +120,8 @@ export const actions: Actions = {
 		} else {
 			state.videos.recording = false;
 			state.videos.playing = false;
-			state.videos.location = 0;
 			state.videos.cameraOn = false;
+			actions.videos.rewind();
 		}
 	},
 	delete: ({ state, actions }, id) => {

@@ -11,8 +11,52 @@ const CL = (...args) => {
 	console.log(...args, `(/src/js/util/CreateModules.tsx)`);
 };
 
-const Component = () => {
+const Component = ({ addSaveLoad = 'add' }) => {
 	const { actions, state } = useApp();
+	type Mode = {
+		title: string;
+		onClick: any;
+	};
+	const modeNull: Mode = {
+		title: 'change title',
+		onClick: () => console.log('change')
+	};
+	const [mode, setMode] = React.useState(modeNull);
+	React.useEffect(() => {
+		switch (addSaveLoad) {
+			case 'loadconfig':
+				setMode({
+					title: 'Load singalong configuration',
+					onClick: () => {
+						console.log('Load congig');
+					}
+				});
+				break;
+			case 'saveconfig':
+				setMode({
+					title: 'Save configuration as',
+					onClick: () => {
+						console.log('Save congig');
+					}
+				});
+				break;
+			case 'add':
+				setMode({
+					title: 'Enter video URL',
+					onClick: () => actions.videos.add(state.videos.videoTitle)
+				});
+				break;
+			case 'save':
+				setMode({
+					title: 'Save file as...',
+					onClick: () => {
+						console.log('Save congig');
+					}
+				});
+				break;
+			case 'load':
+		}
+	}, []);
 	const setValue = (e) => {
 		e.persist();
 		CL('setting value', e.target.value);
@@ -21,7 +65,7 @@ const Component = () => {
 	};
 	return (
 		<React.Fragment>
-			<Text text={`Enter Video URL`} />
+			<Text text={mode.title} />
 			<br />
 			<Input
 				onChange={(e) => actions.videos.setVideoTitle(e.target.value)}
@@ -30,8 +74,8 @@ const Component = () => {
 			/>
 			<ButtonBase
 				disabled={false}
-				onClick={() => actions.videos.add(state.videos.videoTitle)}
-				buttonColor="blue"
+				onClick={mode.onClick}
+				buttoncolor="blue"
 				icon={faCheck}
 			/>
 		</React.Fragment>

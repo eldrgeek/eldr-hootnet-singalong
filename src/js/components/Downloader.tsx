@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 //eslint-disable-next-line
 const CL = (...args) => {
-	console.log(...args, `(/src/js/util/CreateModules.tsx)`);
+	console.log(...args, __filename);
 };
 const Component = ({ url, disabled }) => {
 	const [error, setError] = React.useState('');

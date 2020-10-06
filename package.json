@@ -11,6 +11,7 @@
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
     "autoprefixer": "9.6.0",
+    "file-saver": "2.0.2",
     "overmind": "25.0.0",
     "overmind-react": "26.0.1",
     "postcss": "7.0.32",
