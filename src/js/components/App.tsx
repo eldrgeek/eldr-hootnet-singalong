@@ -13,29 +13,36 @@ import ButtonAddVideo from "./ButtonAddVideo";
 import AddVideoDialog from "./AddVideoDialog";
 import ButtonUpload from "./ButtonUpload";
 import ButtonDownload from "./ButtonDownload";
+import ButtonJoyride from "./ButtonJoyride";
+
+import AppJoyride from "./AppJoyride";
 const CL = (...args) => {
   console.log(...args, `(${__filename})`);
 };
 const App = () => {
   // const { state, actions } = useApp();
+  
   return (
     <React.Fragment>
-      HootNet Singalong
       <div>
-        <ButtonAddVideo />
-        <ButtonCamera />
-        <ButtonPlayPause />
-        <ButtonRecordStop />
-        <ButtonRewind />
-        <ButtonUpload />
-        <ButtonDownload />
-      </div>
-      <AddVideoDialog />
-      <VideoMonitor />
-      <br />
-      <Videos />
-      <br />
-      {/* <Videos>
+        {/* <AppJoyride /> */}
+        HootNet Singalong
+        <div>
+          <ButtonAddVideo />
+          <ButtonCamera />
+          <ButtonPlayPause />
+          <ButtonRecordStop />
+          <ButtonRewind />
+          <ButtonUpload />
+          <ButtonDownload />
+          <ButtonJoyride />
+        </div>
+        <AddVideoDialog />
+        <VideoMonitor />
+        <br />
+        <Videos />
+        <br />
+        {/* <Videos>
       Videos
       Video
         ReactPlayer
@@ -51,7 +58,8 @@ const App = () => {
       Button: RECORD
       Button: REWiND
       Button: CAMERA" */}
-      {/* <Messages /> */}
+        {/* <Messages /> */}
+      </div>
     </React.Fragment>
   );
 };

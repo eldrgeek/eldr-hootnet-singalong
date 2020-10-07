@@ -40,8 +40,10 @@ const Component = ({ accept = "video/*,.json" }) => {
         type="file"
         onChange={fileSelected}
       />
+
       <label htmlFor="icon-button-file">
         <IconButton
+          id="button-upload"
           color="primary"
           aria-label="upload picture"
           component="span"

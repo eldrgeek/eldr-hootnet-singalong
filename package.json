@@ -17,6 +17,7 @@
     "postcss": "7.0.32",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-joyride": "2.2.1",
     "react-player": "2.6.2",
     "react-scripts": "3.0.1",
     "styled-components": "5.2.0",

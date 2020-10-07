@@ -29,6 +29,7 @@ const StyledButton = styled(IconButton)`
 `;
 
 const Component = ({
+  id,
   disabled = false,
   onClick = () => CL("make this work"),
   icon = faCamera,
@@ -46,6 +47,7 @@ const Component = ({
   return (
     <React.Fragment>
       <StyledButton
+        id={id}
         // color={color}
         buttoncolor={buttoncolor}
         disabled={disabled}

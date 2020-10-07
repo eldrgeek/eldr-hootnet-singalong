@@ -1,56 +1,57 @@
-import React from "react"; //eslint-disable-line
-import { CurrentModule, useApp, register } from "../util/CurrentModule"; //eslint-disable-line
-import ButtonBase from "./ButtonBase";
-import { Input } from "@material-ui/core";
+import React from 'react'; //eslint-disable-line
+import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslint-disable-line
+import ButtonBase from './ButtonBase';
+import { Input } from '@material-ui/core';
 
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { saveAs } from "file-saver";
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { saveAs } from 'file-saver';
 const CL = (...args) => {
-  //eslint-disable-line
-  console.log(...args, `(/src/js/util/CreateModules.tsx)`);
+	//eslint-disable-line
+	console.log(...args, `(/src/js/util/CreateModules.tsx)`);
 };
 
 const Component = ({ id = null }) => {
-  const { actions, state } = useApp();
-  const computeDisabled = () => {
-    let disabled = true;
-    const keys = Object.keys(state.videos.videos);
-    keys.forEach((key) => {
-      if (!state.videos.videos[key].URL.match(/^blob/)) {
-        disabled = false;
-      }
-    });
-    return disabled;
-  };
-  const clickDownload = (e) => {
-    if (id) {
-      saveAs(state.videos.videos[id].URL, "video.webm");
-    } else {
-      const config = { name: "hootnet config", time: Date.now(), videos: {} };
-      const keys = Object.keys(state.videos.videos);
-      keys.forEach((key) => {
-        if (!state.videos.videos[key].URL.match(/^blob/)) {
-          config.videos[key] = state.videos.videos[key];
-        }
-      });
-      const file = new File(
-        [JSON.stringify(config, null, " ")],
-        "hootnet.hoot",
-        { type: "application/json" }
-      );
-      saveAs(file);
-    }
-  };
-  return (
-    <React.Fragment>
-      <ButtonBase
-        buttoncolor={id ? "gray" : "blue"}
-        disabled={computeDisabled()}
-        icon={faDownload}
-        onClick={(e) => clickDownload(e)}
-      />
-    </React.Fragment>
-  );
+	const { actions, state } = useApp();
+	const computeDisabled = () => {
+		let disabled = true;
+		const keys = Object.keys(state.videos.videos);
+		keys.forEach((key) => {
+			if (!state.videos.videos[key].URL.match(/^blob/)) {
+				disabled = false;
+			}
+		});
+		return disabled;
+	};
+	const clickDownload = (e) => {
+		e.preventDefault();
+		if (id) {
+			saveAs(state.videos.videos[id].URL, 'video.webm');
+		} else {
+			const config = {};
+			const keys = Object.keys(state.videos.videos);
+			keys.forEach((key) => {
+				if (!state.videos.videos[key].URL.match(/^blob/)) {
+					config[key] = state.videos.videos[key];
+				}
+			});
+			const file = new File(
+				[JSON.stringify(state.videos.videos, null, ' ')],
+				'hootnet.hoot',
+				{ type: 'application/json' }
+			);
+			saveAs(file);
+		}
+	};
+	return (
+		<React.Fragment>
+			<ButtonBase
+				buttoncolor={id ? 'gray' : 'blue'}
+				disabled={computeDisabled()}
+				icon={faDownload}
+				onClick={(e) => clickDownload(e)}
+			/>
+		</React.Fragment>
+	);
 };
 
 export default Component;
