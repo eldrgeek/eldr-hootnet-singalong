@@ -1,12 +1,10 @@
 import { Action } from "../index";
-import React from "react";
-import { CurrentModule, useApp, app } from "../../util/CurrentModule";
-import { Settings } from "@material-ui/icons";
 
 export type Actions = {
   setTextInput: Action<string>;
   setDialogVisible: Action<boolean>;
   setJoyride: Action<boolean>;
+  setJoyrideIndex: Action<number>;
 };
 
 export const actions: Actions = {
@@ -17,7 +15,16 @@ export const actions: Actions = {
     state.UI.isDialogVisible = dialog;
   },
   setJoyride: ({ state, actions }, setting) => {
+    if (setting === true) {
+      state.UI.joyrideIndex = 0;
+    }
+    if (setting === true) {
+      state.UI.joyrideIndex = 0;
+    }
     state.UI.joyride = setting;
+  },
+  setJoyrideIndex: ({ state, actions }, index) => {
+    state.UI.joyrideIndex = index;
   }
 };
 
@@ -25,10 +32,12 @@ export type State = {
   textInput: string;
   isDialogVisible: boolean;
   joyride: boolean;
+  joyrideIndex: number;
 };
 
 export const state: State = {
   textInput: "",
   isDialogVisible: false,
-  joyride: true
+  joyride: true,
+  joyrideIndex: 0
 };

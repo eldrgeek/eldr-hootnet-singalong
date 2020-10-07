@@ -15,18 +15,18 @@ import ButtonUpload from "./ButtonUpload";
 import ButtonDownload from "./ButtonDownload";
 import ButtonJoyride from "./ButtonJoyride";
 
-import AppJoyride from "./AppJoyride";
+// import AppJoyride from "./AppJoyride";
 const CL = (...args) => {
   console.log(...args, `(${__filename})`);
 };
 const App = () => {
   // const { state, actions } = useApp();
-  
+
   return (
     <React.Fragment>
       <div>
         {/* <AppJoyride /> */}
-        HootNet Singalong
+        otNet Singalong
         <div>
           <ButtonAddVideo />
           <ButtonCamera />
