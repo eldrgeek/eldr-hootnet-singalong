@@ -25,8 +25,9 @@ const App = () => {
   return (
     <React.Fragment>
       <div>
-        {/* <AppJoyride /> */}
-        otNet Singalong
+        <h1 style={{ display: "flex", justifyContent: "center" }}>
+          HootNet Singalong
+        </h1>
         <div>
           <ButtonAddVideo />
           <ButtonCamera />

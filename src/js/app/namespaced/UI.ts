@@ -5,6 +5,7 @@ export type Actions = {
   setDialogVisible: Action<boolean>;
   setJoyride: Action<boolean>;
   setJoyrideIndex: Action<number>;
+  setDialogType: Action<string>;
 };
 
 export const actions: Actions = {
@@ -25,6 +26,9 @@ export const actions: Actions = {
   },
   setJoyrideIndex: ({ state, actions }, index) => {
     state.UI.joyrideIndex = index;
+  },
+  setDialogType: ({ state, actions }, mode) => {
+    state.UI.dialogType = mode;
   }
 };
 
@@ -33,11 +37,13 @@ export type State = {
   isDialogVisible: boolean;
   joyride: boolean;
   joyrideIndex: number;
+  dialogType: string;
 };
 
 export const state: State = {
   textInput: "",
   isDialogVisible: false,
   joyride: true,
-  joyrideIndex: 0
+  joyrideIndex: 0,
+  dialogType: ""
 };

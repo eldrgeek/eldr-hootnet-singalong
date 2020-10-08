@@ -16,7 +16,7 @@ const Component = () => {
       <ButtonBase
         id="button-add"
         disabled={state.videos.playing || state.videos.addDialogOpen}
-        onClick={actions.videos.toggleAddDialog}
+        onClick={() => actions.UI.setDialogType("add")}
         buttoncolor="blue"
         icon={faPlus}
       />

@@ -4,6 +4,8 @@ import { CurrentModule, useApp, register } from "../util/CurrentModule"; //eslin
 import Joyride, {
   CallBackProps,
   STATUS,
+  EVENTS,
+  ACTIONS,
   Step,
   StoreHelpers
 } from "react-joyride";
@@ -56,64 +58,112 @@ class Basic extends Component<Props, State> {
       run: this.UIState.joyride,
       steps: [
         {
-          content: <h2>Let's begin our journey!</h2>,
-          locale: { skip: <strong aria-label="skip">S-K-I-P</strong> },
+          content: <h2>Here's a short tour of the applicaton </h2>,
           placement: "center",
           target: "body"
         },
         {
-          content: <h2>Sticky elements</h2>,
-          floaterProps: {
-            disableAnimation: true
-          },
-          spotlightPadding: 20,
-          target: "#button-camera"
+          title: "Add content",
+          content: <div>Click this button to add a track to perform with</div>,
+          // floaterProps: {
+          //   disableAnimation: true
+          // },
+          spotlightPadding: 40,
+          target: "#button-add"
         },
         {
-          content: "These are our super awesome projects!",
-          placement: "bottom",
-          styles: {
-            options: {
-              width: 300
-            }
-          },
-          target: "#button-camera",
-          title: "Our projects"
-        },
-        {
+          title: "Input URL",
           content: (
             <div>
-              You can render anything!
+              You can enter paste a Video URL here
               <br />
               <h3>Like this H3 title</h3>
             </div>
           ),
           placement: "top",
-          target: "#button-joyride",
-          title: "Our Mission"
+          spotlightPadding: 40,
+
+          target: "#input-add"
         },
         {
+          title: "Confirm selection",
           content: (
             <div>
-              <h3>All about us</h3>
-              <svg
-                width="50px"
-                height="50px"
-                viewBox="0 0 96 96"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid"
-              >
-                <g>
-                  <path
-                    d="M83.2922435,72.3864207 C69.5357835,69.2103145 56.7313553,66.4262214 62.9315626,54.7138297 C81.812194,19.0646376 67.93573,0 48.0030634,0 C27.6743835,0 14.1459311,19.796662 33.0745641,54.7138297 C39.4627778,66.4942237 26.1743334,69.2783168 12.7138832,72.3864207 C0.421472164,75.2265157 -0.0385432192,81.3307198 0.0014581185,92.0030767 L0.0174586536,96.0032105 L95.9806678,96.0032105 L95.9966684,92.1270809 C96.04467,81.3747213 95.628656,75.2385161 83.2922435,72.3864207 Z"
-                    fill="#000000"
-                  />
-                </g>
-              </svg>
+              And click here to confirm it
+              <br />
+              <h3>Like this H3 title</h3>
             </div>
           ),
-          placement: "left",
-          target: "#button-joyride"
+          placement: "top",
+          target: "#button-confirm"
+        },
+        {
+          title: "Cancel dialog",
+          content: <div>You can also cancel the dialog by clicking here</div>,
+          placement: "top",
+          target: "#button-cancel"
+        },
+
+        {
+          title: "Turn on camera and mic",
+          content: (
+            <div>
+              To record your sing-along you'll click here
+              <br />
+              to turn on the camera and mic
+            </div>
+          ),
+          placement: "bottom",
+          target: "#button-camera"
+        },
+        {
+          title: "Play",
+          content: (
+            <div>
+              You can click this button to play a track
+              <br />
+              If you've recorded your own track, it will play in sync
+            </div>
+          ),
+          placement: "bottom",
+          target: "#button-play-pause"
+        },
+        {
+          title: "Record your track",
+          content: (
+            <div>
+              If you've turned on your camera, this button will be enabled
+              <br />
+              Click it to start recording. Click again to stop
+            </div>
+          ),
+          placement: "bottom",
+          target: "#button-record-stop"
+        },
+        {
+          title: "Add your track to the composition",
+          content: (
+            <div>
+              When you stop recording, your track will be added
+              <br />
+              Once it's added it will play in sync
+            </div>
+          ),
+          placement: "bottom",
+          target: "#button-record-stop"
+        },
+        {
+          title: "Delete or download",
+          content: (
+            <div>
+              If you don't like your track, you can press delete
+              <br />
+              If you do like it, you can download it, email it or upload to
+              Vimeo or YouTube
+            </div>
+          ),
+          placement: "bottom",
+          target: "#button-record-stop"
         }
       ]
     };
@@ -136,12 +186,37 @@ class Basic extends Component<Props, State> {
   };
 
   private handleJoyrideCallback = (data: CallBackProps) => {
-    const { status, type } = data;
+    const { action, index, status, type } = data;
+
+    if ([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND].includes(type)) {
+      // Update state to advance the tour
+      this.UIActions.setJoyrideIndex(
+        index + (action === ACTIONS.PREV ? -1 : 1)
+      );
+    } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+      this.setState({ run: false });
+      this.UIActions.setJoyride(false);
+      // Need to set our running state to false, so we can restart if we click start again.
+    }
+    enum StepId {
+      OpenAdd = 2,
+      CloseAdd = StepId.OpenAdd + 3
+    }
+    switch (index) {
+      case StepId.OpenAdd:
+        this.UIActions.setDialogType("add");
+        break;
+      case StepId.CloseAdd:
+        this.UIActions.setDialogType("");
+        break;
+    }
+
+    console.groupCollapsed(type);
+    console.log(data); //eslint-disable-line no-console
+    console.groupEnd();
     const finishedStatuses: string[] = [STATUS.FINISHED, STATUS.SKIPPED];
 
     if (finishedStatuses.includes(status)) {
-      this.setState({ run: false });
-      this.UIActions.setJoyride(false);
     }
 
     // tslint:disable:no-console
@@ -156,7 +231,10 @@ class Basic extends Component<Props, State> {
     const { breakpoint } = this.props;
 
     return (
-      <div className="demo-wrapper">
+      <div
+        style={{ display: "flex", justifyContent: "center" }}
+        lassName="demo-wrapper"
+      >
         <Joyride
           callback={this.handleJoyrideCallback}
           continuous={true}
@@ -165,6 +243,7 @@ class Basic extends Component<Props, State> {
           scrollToFirstStep={true}
           showProgress={true}
           showSkipButton={true}
+          stepIndex={this.UIState.joyrideIndex}
           steps={steps}
           styles={{
             options: {
