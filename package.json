@@ -25,8 +25,15 @@
     "tailwindcss": "1.6.2",
     "use-location-state": "2.3.1"
   },
+
   "devDependencies": {
-    "typescript": "3.3.3"
+    "@types/node": "^8.10.59",
+    "@types/vscode": "^1.1.36",
+    "rimraf": "^3.0.0",
+    "tslint": "^5.20.1",
+    "tslint-config-xo": "^2.0.0",
+    "typescript": "^3.7.4",
+    "vscode": "^1.1.36"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,10 +41,5 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }

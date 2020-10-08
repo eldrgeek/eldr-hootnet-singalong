@@ -43,7 +43,7 @@ export type State = {
 export const state: State = {
   textInput: "",
   isDialogVisible: false,
-  joyride: true,
+  joyride: false,
   joyrideIndex: 0,
   dialogType: ""
 };

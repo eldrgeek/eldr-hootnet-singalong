@@ -1,6 +1,5 @@
 import { Action } from "../index";
-import React from "react";
-import { CurrentModule, useApp, app } from "../../util/CurrentModule";
+// import { CurrentModule, useApp, app } from "../../util/CurrentModule";
 
 export type Actions = {};
 
