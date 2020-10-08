@@ -13,6 +13,7 @@ const CL = (...args) => {
 const Component = ({ id = null }) => {
   const { actions, state } = useApp();
   const computeDisabled = () => {
+    if (id) return false;
     let disabled = true;
     const keys = Object.keys(state.videos.videos);
     keys.forEach((key) => {
@@ -23,8 +24,8 @@ const Component = ({ id = null }) => {
     return disabled;
   };
   const clickDownload = (e) => {
-    e.preventDefault();
     if (id) {
+      CL("CALLING Saveas");
       saveAs(state.videos.videos[id].URL, "video.webm");
     } else {
       const config = {};
