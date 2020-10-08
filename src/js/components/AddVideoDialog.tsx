@@ -1,12 +1,11 @@
 //@ts-ignore
-import React from "react";
+import React from "react"; //eslint-disable-line
 //@ts-ignore
-import { CurrentModule, useApp, register } from "../util/CurrentModule";
+import { CurrentModule, useApp, register } from "../util/CurrentModule"; //eslint-disable-line
 // import { IconButton } from '@material-ui/core';
 import ButtonBase from "./ButtonBase";
 import { faCheck, faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import { Input } from "@material-ui/core";
-import Text from "./Text";
 //@ts-ignore
 const CL = (...args) => {
   console.log(...args, `(/src/js/util/CreateModules.tsx)`);
@@ -71,6 +70,7 @@ const Component = () => {
   //@ts-ignore
   const setValue = (e) => {
     //eslint-disable-line
+    //eslint-disable-line
     e.persist();
     CL("setting value", e.target.value);
     //@ts-ignore
@@ -83,9 +83,7 @@ const Component = () => {
       <div
         style={{ border: "1px solid black", padding: "6px", width: "500px" }}
       >
-        <div>
-          <Text text={mode.title} />
-        </div>
+        <div>{mode.title}</div>
         <div>
           <Input
             style={{ margin: "2px 23px 2px 10px", width: "350px" }}

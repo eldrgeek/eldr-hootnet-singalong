@@ -17,14 +17,17 @@ const Video = ({ id }) => {
   React.useEffect(() => {
     // CL(id, state.videos.videos);
     if (urlIsBlob()) {
+      //@ts-ignore
       actions.videos.setLoadingState({ id, newState: "loaded" });
       return;
     }
-  }, []);
+  }, []); //eslint-disable-line
   React.useEffect(() => {
     // CL(id, state.videos.videos);
     if (state.videos.videos[id].rewinding) {
+      //@ts-ignore
       videoRef.current.seekTo(0);
+      //@ts-ignore
       actions.videos.clearRewinding(id);
     }
   }, [state.videos.videos[id].rewinding]); //eslint-disable-line
@@ -32,9 +35,12 @@ const Video = ({ id }) => {
     if (state.videos.videos[id].loadingState !== "initial") return;
 
     //started from the device
+    //@ts-ignore
     actions.videos.setLoadingState({ id, newState: "loading" });
     setTimeout(() => {
+      //@ts-ignore
       actions.videos.setLoadingState({ id, newState: "loaded" });
+      //@ts-ignore
       videoRef.current.seekTo(0);
     }, 10);
   };
@@ -48,6 +54,7 @@ const Video = ({ id }) => {
         height={"50%"}
         width={"50%"}
         url={state.videos.videos[id].URL}
+        //@ts-ignore
         ref={videoRef}
         playing={
           state.videos.videos[id].loadingState === "loading" ||
@@ -72,6 +79,7 @@ const VideoWrapper = ({ id }) => {
   if (keys.length > 0) {
     return <Video id={keys[0]} />;
   }
+  //@ts-ignore
   const newKey = actions.videos.add(testURL);
   return <Video id={newKey} />;
 };

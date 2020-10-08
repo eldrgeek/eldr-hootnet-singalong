@@ -2,9 +2,8 @@
 import React from "react"; //eslint-disable-line
 import { CurrentModule, useApp, register } from "../util/CurrentModule"; //eslint-disable-line
 import Video from "./Video";
-//@ts-ignore
+//eslint-disable-next-line
 const CL = (...args) => {
-  //eslint-disable-line
   //eslint-disable-line
   console.log(...args, `(${__filename})`);
 };

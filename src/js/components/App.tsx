@@ -1,9 +1,7 @@
-import React from "react";
-import { CurrentModule, useApp } from "../util/CurrentModule";
+import React from "react"; //eslint-disable-line
+import { CurrentModule, useApp } from "../util/CurrentModule"; //eslint-disable-line
 // import Messages from "./Messages";
 import Videos from "./Videos";
-import IconButton from "./IconButton";
-import Input from "./Input";
 import ButtonCamera from "./ButtonCamera";
 import ButtonPlayPause from "./ButtonPlayPause";
 import ButtonRecordStop from "./ButtonRecordStop";
@@ -18,6 +16,7 @@ import ButtonJoyride from "./ButtonJoyride";
 // import AppJoyride from "./AppJoyride";
 //@ts-ignore
 const CL = (...args) => {
+  //eslint-disable-line
   console.log(...args, `(${__filename})`);
 };
 const App = () => {

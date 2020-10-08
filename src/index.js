@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; //eslint-disable-line
 import AppWrapper from "./js/util/AppWrapper";
 import { CurrentModule } from "./js/util/CurrentModule";
 // import "./js/util/CreateModules";
