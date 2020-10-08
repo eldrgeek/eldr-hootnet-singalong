@@ -23,6 +23,7 @@ const Component = ({ id }) => {
           if (url.match(/^blob:/)) {
             URL.revokeObjectURL(url);
           }
+          //@ts-ignore
           actions.videos.delete(id);
         }}
       />

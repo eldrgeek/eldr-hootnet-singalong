@@ -1,6 +1,6 @@
 import React from "react";
 import { CurrentModule, useApp } from "../util/CurrentModule";
-import Messages from "./Messages";
+// import Messages from "./Messages";
 import Videos from "./Videos";
 import IconButton from "./IconButton";
 import Input from "./Input";
@@ -16,6 +16,7 @@ import ButtonDownload from "./ButtonDownload";
 import ButtonJoyride from "./ButtonJoyride";
 
 // import AppJoyride from "./AppJoyride";
+//@ts-ignore
 const CL = (...args) => {
   console.log(...args, `(${__filename})`);
 };

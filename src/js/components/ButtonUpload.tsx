@@ -18,12 +18,14 @@ const Component = ({ accept = "video/*,.json" }) => {
     const file = e.target.files[0];
     if (file.name.match(/\.(hoot)|(json)$/)) {
       try {
+        //@ts-ignore
         const spec = JSON.parse(e.target.files[0]);
       } catch (e) {
         alert("problem parsing the file");
       }
     } else {
       const blob = URL.createObjectURL(e.target.files[0]);
+      //@ts-ignore
       actions.videos.add(blob);
     }
     CL("File ", e.target, e.target.files[0].name, e.target.files[0].type);

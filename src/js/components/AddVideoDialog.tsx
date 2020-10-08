@@ -1,12 +1,13 @@
+//@ts-ignore
 import React from "react";
-
+//@ts-ignore
 import { CurrentModule, useApp, register } from "../util/CurrentModule";
 // import { IconButton } from '@material-ui/core';
 import ButtonBase from "./ButtonBase";
 import { faCheck, faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import { Input } from "@material-ui/core";
-import { faChcck } from "@fortawesome/free-solid-svg-icons";
 import Text from "./Text";
+//@ts-ignore
 const CL = (...args) => {
   console.log(...args, `(/src/js/util/CreateModules.tsx)`);
 };
@@ -45,7 +46,9 @@ const Component = () => {
           title: "Enter video URL",
           onClick: () => {
             CL("select the video");
+            //@ts-ignore
             actions.videos.add(state.videos.videoTitle);
+            //@ts-ignore
             actions.UI.setDialogType("");
           }
         });
@@ -63,10 +66,14 @@ const Component = () => {
       default:
         break;
     }
-  }, [state.UI.dialogType]);
+  }, [state.UI.dialogType]); //eslint-disable-line
+
+  //@ts-ignore
   const setValue = (e) => {
+    //eslint-disable-line
     e.persist();
     CL("setting value", e.target.value);
+    //@ts-ignore
     actions.videos.setVideoTitle(e.target.value);
     // CL('setting', e.target.value);
   };
@@ -83,6 +90,7 @@ const Component = () => {
           <Input
             style={{ margin: "2px 23px 2px 10px", width: "350px" }}
             id="input-add"
+            //@ts-ignore
             onChange={(e) => actions.videos.setVideoTitle(e.target.value)}
             value={state.videos.videoTitle}
             placeholder="Enter video URL"
@@ -99,6 +107,7 @@ const Component = () => {
           <ButtonBase
             id="button-cancel"
             disabled={false}
+            //@ts-ignore
             onClick={() => actions.UI.setDialogType("")}
             buttoncolor="blue"
             icon={faWindowClose}

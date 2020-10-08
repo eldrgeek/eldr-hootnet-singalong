@@ -21,6 +21,7 @@ const Component = () => {
           (state.videos.playing && !state.videos.recording)
         }
         icon={state.videos.recording ? faStopCircle : faRecordVinyl}
+        //@ts-ignore
         onClick={actions.videos.toggleRecording}
       />
     </React.Fragment>

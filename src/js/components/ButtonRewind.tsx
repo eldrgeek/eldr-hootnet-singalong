@@ -18,6 +18,7 @@ const Component = () => {
         buttoncolor="red"
         disabled={!state.videos.hasPlayed || state.videos.playing}
         icon={faUndo}
+        //@ts-ignore
         onClick={actions.videos.rewind}
       />
     </React.Fragment>

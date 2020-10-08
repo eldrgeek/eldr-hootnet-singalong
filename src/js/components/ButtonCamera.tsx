@@ -16,6 +16,7 @@ const Component = () => {
       <ButtonBase
         id="button-camera"
         disabled={state.videos.recording}
+        //@ts-ignore
         onClick={actions.videos.toggleCameraOn}
         buttoncolor="green"
         icon={state.videos.cameraOn ? faVideoSlash : faVideo}

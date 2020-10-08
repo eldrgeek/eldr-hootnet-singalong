@@ -18,6 +18,7 @@ const Component = () => {
         buttoncolor="orange"
         disabled={state.videos.recording}
         icon={state.videos.playing ? faPause : faPlay}
+        //@ts-ignore
         onClick={actions.videos.togglePlay}
       />
     </React.Fragment>

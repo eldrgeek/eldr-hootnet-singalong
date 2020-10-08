@@ -16,6 +16,7 @@ export type Actions = {
 };
 
 export const actions: Actions = {
+  // @ts-ignore: ignore error TS2339 property does not exist
   register: ({ state, actions }, { name, element, path, show = false }) => {
     const registration = {
       name,
@@ -23,13 +24,13 @@ export const actions: Actions = {
       path,
       show
     };
-    state._debugger.registrations[name] = registration;
+    state!._debugger.registrations[name] = registration;
   },
   toggleApp: ({ state }) => {
-    state._debugger.showApp = !state._debugger.showApp;
+    state!._debugger.showApp = !state!._debugger.showApp;
   },
   toggleShowAll: ({ state }) => {
-    state._debugger.showAll = !state._debugger.showAll;
+    state!._debugger.showAll = !state!._debugger.showAll;
   }
 };
 export type State = {

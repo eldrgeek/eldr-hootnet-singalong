@@ -1,7 +1,8 @@
+//@ts-ignore
 import React from "react"; //eslint-disable-line
 import { CurrentModule, useApp, register } from "../util/CurrentModule"; //eslint-disable-line
 import Video from "./Video";
-
+//@ts-ignore
 const CL = (...args) => {
   //eslint-disable-line
   //eslint-disable-line

@@ -1,41 +1,41 @@
-import React from 'react';
-import { CurrentModule, useApp, register } from '../util/CurrentModule';
-import { IconButton, Box } from '@material-ui/core';
+import React from "react";
+import { CurrentModule, useApp, register } from "../util/CurrentModule";
+import { IconButton } from "@material-ui/core";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 const CL = (...args) => {
-	console.log(...args, `(${__filename})`);
+  console.log(...args, `(${__filename})`);
 };
-CL('Icon button registered ');
+CL("Icon button registered ");
 
 const Component = ({
-	icon = faCoffee,
-	onClick = () => console.log('connect this button'),
-	disabled = false
+  icon = faCoffee,
+  onClick = () => console.log("connect this button"),
+  disabled = false
 
-	// icon=<QuestionMarkIcon/>
+  // icon=<QuestionMarkIcon/>
 }) => {
-	const { state, actions } = useApp();
-	// useRegistration(actions, __filename, Component, true);
+  const { state, actions } = useApp();
+  // useRegistration(actions, __filename, Component, true);
 
-	// React.useEffect(() => {
-	//   actions.videos._test();
-	// }, []);
-	return (
-		<React.Fragment>
-			{/* <Hover> */}
-			{/* {(isHovered) => ( */}
-			{/* // <Box sx={{ height: 9, bg: isHovered ? 'red600' : 'blue600' }}></Box> */}
-			<IconButton disabled={disabled} color="primary" onClick={() => onClick()}>
-				<FontAwesomeIcon icon={icon} />
-			</IconButton>
+  // React.useEffect(() => {
+  //   actions.videos._test();
+  // }, []);
+  return (
+    <React.Fragment>
+      {/* <Hover> */}
+      {/* {(isHovered) => ( */}
+      {/* // <Box sx={{ height: 9, bg: isHovered ? 'red600' : 'blue600' }}></Box> */}
+      <IconButton disabled={disabled} color="primary" onClick={() => onClick()}>
+        <FontAwesomeIcon icon={icon} />
+      </IconButton>
 
-			{/* )}
+      {/* )}
       </Hover> */}
-		</React.Fragment>
-	);
+    </React.Fragment>
+  );
 };
 
 // export default Component;

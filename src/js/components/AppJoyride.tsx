@@ -1,3 +1,4 @@
+//@ts-ignore
 import React, { Component } from "react";
 import { CurrentModule, useApp, register } from "../util/CurrentModule"; //eslint-disable-line
 
@@ -9,6 +10,7 @@ import Joyride, {
   Step,
   StoreHelpers
 } from "react-joyride";
+//@ts-ignore
 import styled from "styled-components";
 import App from "./App";
 // @ts-ignore
@@ -37,7 +39,7 @@ interface State {
 //   max-width: ${({ breakpoint }: Props) => `${breakpoint === 'lg' ? '500px' : '290px'}`};
 //   width: 100%;
 // `;
-
+//@ts-ignore
 const Subtitle = styled.p`
   font-size: ${({ breakpoint }: Props) =>
     `${breakpoint === "lg" ? "35px" : "20px"}`};
@@ -46,12 +48,12 @@ const Subtitle = styled.p`
 `;
 
 class Basic extends Component<Props, State> {
+  //@ts-ignore
   private helpers?: StoreHelpers;
   private UIState: any;
   private UIActions: any;
   constructor(props: Props) {
     super(props);
-    console.log("PROPS", props.state);
     this.UIState = props.state.UI;
     this.UIActions = props.actions.UI;
     this.state = {
@@ -176,7 +178,7 @@ class Basic extends Component<Props, State> {
   private getHelpers = (helpers: StoreHelpers) => {
     this.helpers = helpers;
   };
-
+  //@ts-ignore
   private handleClickStart = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
@@ -187,12 +189,13 @@ class Basic extends Component<Props, State> {
 
   private handleJoyrideCallback = (data: CallBackProps) => {
     const { action, index, status, type } = data;
-
+    //@ts-ignore
     if ([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND].includes(type)) {
       // Update state to advance the tour
       this.UIActions.setJoyrideIndex(
         index + (action === ACTIONS.PREV ? -1 : 1)
       );
+      //@ts-ignore
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       this.setState({ run: false });
       this.UIActions.setJoyride(false);
@@ -227,13 +230,16 @@ class Basic extends Component<Props, State> {
   };
 
   public render() {
-    const { run, steps } = this.state;
-    const { breakpoint } = this.props;
+    //@ts-ignore
+    const { steps } = this.state;
+    //@ts-ignore
+    // const { breakpoint } = this.props;
 
     return (
       <div
         style={{ display: "flex", justifyContent: "center" }}
-        lassName="demo-wrapper"
+
+        // lassName="demo-wrapper"
       >
         <Joyride
           callback={this.handleJoyrideCallback}

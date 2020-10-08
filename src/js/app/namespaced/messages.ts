@@ -17,6 +17,7 @@ export type Actions = {
 
 export const actions: Actions = {
   setText: ({ state, actions }, message) => {
+    //@ts-ignore
     actions.messages.clear();
     state.messages.text = message;
     state.messages.timeout = setTimeout(actions.messages.clear, 5000);

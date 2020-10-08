@@ -17,6 +17,7 @@ const Component = () => {
         id="button-joyride"
         disabled={state.videos.recording}
         onClick={() => {
+          //@ts-ignore
           actions.UI.setJoyride(!state.UI.joyride);
         }}
         buttoncolor="blue"

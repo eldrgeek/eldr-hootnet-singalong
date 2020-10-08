@@ -40,11 +40,7 @@ const Component = ({
 }) => {
   const { actions, state } = useApp(); //eslint-disable-line
   const onClickHandler = (e) => {
-    if (onClick.withEvent) {
-      onClick(e);
-    } else {
-      onClick();
-    }
+    onClick();
   };
   return (
     <React.Fragment>

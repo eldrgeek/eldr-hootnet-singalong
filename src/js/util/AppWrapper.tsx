@@ -1,6 +1,8 @@
+//@ts-ignore
 import React from "react"; //eslint-disable-line
 import { CurrentModule, useApp } from "../util/CurrentModule";
-import App from "../components/AppJoyride";
+//@ts-ignore
+import AppJoyride from "../components/AppJoyride";
 import { Link } from "@material-ui/core";
 import ButtonDebugger from "./ButtonDebugger";
 import ButtonShowAll from "./ButtonShowAll";
@@ -19,7 +21,7 @@ const Component = () => {
   return (
     <React.Fragment>
       {state._debugger.showApp ? (
-        <App />
+        <AppJoyride />
       ) : (
         <div>
           <ButtonShowAll onClick={() => actions._debugger.toggleShowAll()} />

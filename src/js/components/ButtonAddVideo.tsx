@@ -4,6 +4,7 @@ import { CurrentModule, useApp, register } from "../util/CurrentModule"; //eslin
 import ButtonBase from "./ButtonBase";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
+//@ts-ignore
 const CL = (...args) => {
   //eslint-disable-line
   console.log(...args, `(/src/js/util/CreateModules.tsx)`);
@@ -16,6 +17,7 @@ const Component = () => {
       <ButtonBase
         id="button-add"
         disabled={state.videos.playing || state.videos.addDialogOpen}
+        //@ts-ignore
         onClick={() => actions.UI.setDialogType("add")}
         buttoncolor="blue"
         icon={faPlus}

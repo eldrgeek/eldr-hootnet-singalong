@@ -4,7 +4,7 @@ export type Actions = {
   _test: Action;
   setVideoTitle: Action<string>;
   clearRewinding: Action<string>;
-  setLoadingState: Action<{ id: string; state: string }>;
+  setLoadingState: Action<{ id: string; newState: string }>;
   setAttr: Action<{ attr: string; value: any }>;
   setDelayTime: Action<{ id: string; time: number }>;
   setStartTime: Action<{ id: string; time: number }>;
@@ -36,6 +36,8 @@ type VideoInfo = {
   loadingState: string;
 };
 
+//@ts-ignore
+//eslint-disable-next-line
 const delay = async (timeout) => {
   //eslint-disable-line
   //eslint-disable-line
@@ -46,7 +48,9 @@ const delay = async (timeout) => {
 
 export const actions: Actions = {
   _test: async ({ state, actions }) => {
+    //@ts-ignore
     const a = actions.videos; //eslint-disable-line
+    //@ts-ignore
     const s = state.videos; //eslint-disable-line
     // console.log('Test called', state); //Object.keys(s.videos))
     // s.videos.videos = {}
@@ -61,6 +65,7 @@ export const actions: Actions = {
     // a.pauseAll();
     // await delay(1000);
   },
+  //@ts-ignore
   setLoadingState: ({ state }, { id, newState }) => {
     state.videos.videos[id].loadingState = newState;
   },
@@ -77,6 +82,7 @@ export const actions: Actions = {
   },
   add: ({ state, actions }, URL) => {
     const s = state.videos;
+    //@ts-ignore
     const v: VideoInfo = {
       id: "S" + s.index++,
       URL,
@@ -119,6 +125,7 @@ export const actions: Actions = {
       state.videos.recording = false;
       state.videos.playing = false;
       state.videos.cameraOn = false;
+      //@ts-ignore
       actions.videos.rewind();
     }
   },
@@ -138,6 +145,7 @@ export const actions: Actions = {
   unmarkAll: ({ state, actions }) => {},
   rewind: ({ state, actions }) => {
     state.videos.hasPlayed = false;
+    //@ts-ignore
     actions.videos.setAttr({ attr: "rewinding", value: true });
   },
   _applyAll: ({ state, actions }) => {}
