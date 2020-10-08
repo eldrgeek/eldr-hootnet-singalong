@@ -24,7 +24,13 @@ const Component = () => {
         <AppJoyride />
       ) : (
         <div>
-          <ButtonShowAll onClick={() => actions._debugger.toggleShowAll()} />
+          <ButtonShowAll
+            onClick={
+              //@ts-ignore
+              () => actions._debugger.toggleShowAll()
+            }
+          />
+
           {Object.keys(state._debugger.registrations).map((key) => {
             const entry = state._debugger.registrations[key];
             if (!state._debugger.showAll && !entry.show) return null;
@@ -51,7 +57,12 @@ const Component = () => {
         </div>
       )}
       <br />
-      <ButtonDebugger onClick={() => actions._debugger.toggleApp()} />
+      <ButtonDebugger
+        onClick={
+          //@ts-ignore
+          () => actions._debugger.toggleApp()
+        }
+      />
     </React.Fragment>
   );
 };

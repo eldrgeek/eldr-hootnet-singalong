@@ -2,8 +2,6 @@
 import React from "react";
 import { CurrentModule, useApp, app } from "./CurrentModule";
 import { Button as MaterialButton } from "@material-ui/core";
-import { TextareaAutosize } from "@material-ui/core";
-import { action } from "overmind";
 
 const Button = (props) => {
   return (
@@ -154,7 +152,9 @@ const Component = () => {
   const copyToClipboard = (text) => {
     console.log("COPY", text);
     const copyText = document.querySelector("#fakeClipboard");
+    //@ts-ignore
     copyText.value = text;
+    //@ts-ignore
     copyText.select();
     document.execCommand("copy");
   };
