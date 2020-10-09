@@ -1,5 +1,5 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import { Typography } from '@material-ui/core';
 import { CurrentModule } from '../util/CurrentModule';
 
 export const H1 = (props) => {
