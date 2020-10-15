@@ -80,7 +80,15 @@ class Basic extends Component<Props, State> {
 			run: this.UIState.joyride,
 			steps: addSpotlight([
 				{
-					content: <h2>Here's a short tour of the applicaton </h2>,
+					content: (
+						<div>
+							<h2>Here's a short tour of the applicaton </h2>
+							<a href="https://trello.com/b/EkjlIyIn/hootnet-tasks">
+								Trello tasks
+							</a>
+						</div>
+					),
+
 					placement: 'center',
 					target: 'body',
 					spotlight: 'no'

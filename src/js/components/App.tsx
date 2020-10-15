@@ -12,7 +12,10 @@ import AddVideoDialog from './AddVideoDialog';
 import ButtonUpload from './ButtonUpload';
 import ButtonDownload from './ButtonDownload';
 import ButtonJoyride from './ButtonJoyride';
+import ButtonDesktop from './ButtonDesktop';
 import { H4 } from './Typography';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+
 // import AppJoyride from "./AppJoyride";
 //@ts-ignore
 const CL = (...args) => {
@@ -25,23 +28,35 @@ const App = () => {
 	return (
 		<React.Fragment>
 			<div>
-				<H4 style={{ display: 'flex', justifyContent: 'center' }}>
-					HootNet SingAlong
-				</H4>
-				<div>
-					<ButtonAddVideo />
-					<ButtonCamera />
-					<ButtonPlayPause />
-					<ButtonRecordStop />
-					<ButtonRewind />
-					<ButtonUpload />
-					<ButtonDownload />
-					<ButtonJoyride />
-				</div>
+				<TransformWrapper
+					options={{
+						limitToBounds: false,
+						limitToWrapper: false
+					}}
+				>
+					<TransformComponent>
+						<H4 style={{ display: 'flex', justifyContent: 'center' }}>
+							HootNet SingAlong
+						</H4>
+						<div>
+							<ButtonAddVideo />
+							<ButtonCamera />
+							<ButtonPlayPause />
+							<ButtonRecordStop />
+							<ButtonRewind />
+							<ButtonUpload />
+							<ButtonDownload />
+							<ButtonJoyride />
+							<ButtonDesktop />
+						</div>
+					</TransformComponent>
+				</TransformWrapper>
 				<AddVideoDialog />
 				<VideoMonitor />
 				<br />
+				{/* <TransformWrapper> */}
 				<Videos />
+				{/* </TransformWrapper> */}
 				<br />
 				{/* <Videos>
       Videos

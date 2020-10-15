@@ -3,6 +3,8 @@ import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslin
 import ReactPlayer from 'react-player';
 import getCameraStream from '../lib/getCameraStream';
 import Blobber from '../lib/blobber';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+
 //eslint-disable-next-line
 const CL = (...args) => {
 	console.log(...args, __filename);
@@ -17,6 +19,8 @@ const Monitor = () => {
 			getCameraStream().then((stream) => {
 				setCameraStream(stream);
 				const b = new Blobber(stream);
+				b.start();
+				// b.pause();
 				setBlobber(b);
 			});
 		} else if (!state.videos.cameraOn && cameraStream !== null) {
@@ -27,7 +31,7 @@ const Monitor = () => {
 
 	React.useEffect(() => {
 		if (state.videos.recording) {
-			blobber.start();
+			blobber.resume();
 		} else if (blobber) {
 			blobber.stopBlobber();
 			//@ts-ignore
