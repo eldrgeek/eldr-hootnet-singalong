@@ -28,29 +28,21 @@ const App = () => {
 	return (
 		<React.Fragment>
 			<div>
-				<TransformWrapper
-					options={{
-						limitToBounds: false,
-						limitToWrapper: false
-					}}
-				>
-					<TransformComponent>
-						<H4 style={{ display: 'flex', justifyContent: 'center' }}>
-							HootNet SingAlong
-						</H4>
-						<div>
-							<ButtonAddVideo />
-							<ButtonCamera />
-							<ButtonPlayPause />
-							<ButtonRecordStop />
-							<ButtonRewind />
-							<ButtonUpload />
-							<ButtonDownload />
-							<ButtonJoyride />
-							<ButtonDesktop />
-						</div>
-					</TransformComponent>
-				</TransformWrapper>
+				<H4 style={{ display: 'flex', justifyContent: 'center' }}>
+					HootNet SingAlong
+				</H4>
+				<div style={{ display: 'flex', justifyContent: 'center' }}>
+					<ButtonAddVideo />
+					<ButtonCamera />
+					<ButtonPlayPause />
+					<ButtonRecordStop />
+					<ButtonRewind />
+					<ButtonUpload />
+					<ButtonDownload />
+					<ButtonJoyride />
+					<ButtonDesktop />
+				</div>
+
 				<AddVideoDialog />
 				<VideoMonitor />
 				<br />
