@@ -21,7 +21,7 @@ const Monitor = () => {
 			getCameraStream().then((stream) => {
 				setCameraStream(stream);
 				const b = new Blobber(stream);
-				b.start();
+				// b.start();
 				// b.pause();
 				setBlobber(b);
 			});
@@ -33,7 +33,7 @@ const Monitor = () => {
 
 	React.useEffect(() => {
 		if (state.videos.recording) {
-			blobber.resume();
+			blobber.start();
 		} else if (blobber) {
 			blobber.stopBlobber();
 			//@ts-ignore

@@ -123,10 +123,10 @@ class Blobber {
 		try {
 			this.mediaRecorder.start(interval);
 			const resumeTime = performance.now();
-			this.mediaRecorder.onstart = () => {
-				this.mediaRecorder.pause();
-				CL('start to event', performance.now() - resumeTime);
-			};
+			// this.mediaRecorder.onstart = () => {
+			// 	this.mediaRecorder.pause();
+			// 	CL('start to event', performance.now() - resumeTime);
+			// };
 			// console.log("MediaRecorder started", mediaRecorder);
 		} catch (e) {
 			console.log(Error, 'cannot start recorder', e.toString());
