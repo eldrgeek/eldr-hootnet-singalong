@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import ButtonDownload from './ButtonDownload';
 import ButtonBase from './ButtonBase';
 import ButtonDelete from './ButtonDelete';
+import ButtonToCloud from './ButtonToCloud';
 import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 const CL = (...args) => {
 	//eslint-disable-line
@@ -72,7 +73,10 @@ const Video = ({ id }) => {
 					// onProgress={(e) => actions.videos.setLocation(e.playedSeconds)}
 				/>
 				{urlIsBlob() ? (
-					<ButtonDownload id={id} />
+					<React.Fragment>
+						<ButtonDownload id={id} />
+						<ButtonToCloud id={id} />
+					</React.Fragment>
 				) : (
 					<ButtonBase icon={faArrowsAlt} />
 				)}

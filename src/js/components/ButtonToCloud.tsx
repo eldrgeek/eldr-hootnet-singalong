@@ -1,0 +1,26 @@
+import React from 'react'; //eslint-disable-line
+import { CurrentModule, useApp, register, C } from '../util/CurrentModule'; //eslint-disable-line
+import ButtonBase from './ButtonBase';
+import { Input } from '@material-ui/core';
+import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+const CL = C(__filename);
+
+const Component = ({ id = null }) => {
+	const { actions, state } = useApp();
+
+	const clickToCloud = (e) => {};
+	return (
+		<React.Fragment>
+			<ButtonBase
+				buttoncolor={id ? 'gray' : 'blue'}
+				icon={faCloudUploadAlt}
+				//@ts-ignore
+				onClick={(e) => clickToCloud(e)}
+			/>
+		</React.Fragment>
+	);
+};
+
+export default Component;
+// CurrentModule(Component);
+register(__filename, Component, false);

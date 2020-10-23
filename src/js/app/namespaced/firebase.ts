@@ -13,6 +13,8 @@ export type Actions = {
 	init: Action;
 	store: Action<StorageSpec>;
 	list: Action<string>;
+	upload: Action<StorageSpec>;
+	download: Action<string, any>;
 };
 
 export const actions: Actions = {
@@ -29,21 +31,13 @@ export const actions: Actions = {
 			measurementId: 'G-JN7VTQKP24'
 		};
 		// Initialize Firebase
-		console.log(firebase);
-		if (!state.firebase.fb) {
-			CL('Firebase init first time');
-			// state.firebase.fb = firebase;
-			// CL(firebase)
-			try {
-				CL('Init');
-				firebase.initializeApp(firebaseConfig);
-			} catch (e) {
-				CL('error', e);
-			}
+		try {
+			CL('Init');
+			firebase.initializeApp(firebaseConfig);
+		} catch (e) {
+			CL('Already initialized', e);
 			// firebase.analytics();
 		}
-		CL('Init complete');
-		fb = state.firebase.fb;
 	},
 	store({ state, actions }, spec: StorageSpec) {
 		if (!spec || !spec.path) return;
@@ -58,6 +52,12 @@ export const actions: Actions = {
 			})
 			.catch((e) => CL('an error storing', e));
 		CL('stored');
+	},
+	upload({ state }, spec: StorageSpec) {
+		const ref = firebase.storage().ref(spec.path);
+	},
+	download({ state }, path: string) {
+		const ref = firebase.storage().ref(path);
 	},
 	list({ state }, path = '/') {
 		const ref = firebase.storage().ref(path);
@@ -82,7 +82,7 @@ export const actions: Actions = {
 	}
 };
 export type State = {
-	firebase: any;
+	fb: any;
 };
 
 export const state: State = {

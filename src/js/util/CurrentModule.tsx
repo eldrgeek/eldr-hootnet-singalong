@@ -36,6 +36,6 @@ const CurrentModule = (Element, props?) => {
 		rootElement
 	);
 };
-export { CurrentModule, app, useApp, useRegistration, register };
+export { CurrentModule, app, useApp, useRegistration, register, C };
 export default CurrentModule;
 CurrentModule(Nothing);
