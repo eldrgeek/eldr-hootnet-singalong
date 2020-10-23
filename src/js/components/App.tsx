@@ -13,6 +13,7 @@ import ButtonUpload from './ButtonUpload';
 import ButtonDownload from './ButtonDownload';
 import ButtonJoyride from './ButtonJoyride';
 import ButtonDesktop from './ButtonDesktop';
+import DragWrapper from './DragWrapper';
 import { H4 } from './Typography';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
@@ -22,16 +23,50 @@ const CL = (...args) => {
 	//eslint-disable-line
 	console.log(...args, `(${__filename})`);
 };
+
+// const Jitsi = () => {
+// 	return (
+// 		<div
+// 			id="jitsi-div"
+// 			style={{ overflow: 'hidden', paddingTop: '125%', position: 'relative' }}
+// 		>
+// 			<iframe
+// 				title="Jitsi"
+// 				style={{
+// 					height: '100%',
+// 					width: '100%',
+// 					left: 0,
+// 					position: 'absolute',
+// 					top: 0
+// 				}}
+// 				allow="camera; microphone; fullscreen; display-capture"
+// 				src="https://meet.jit.si/HootnetTestbed"
+// 				// style={{ height: '90%', width: '70%' }}
+// 			></iframe>
+// 		</div>
+// 	);
+// };
 const App = () => {
 	// const { state, actions } = useApp();
 
 	return (
 		<React.Fragment>
-			<div>
-				<H4 style={{ display: 'flex', justifyContent: 'center' }}>
-					HootNet SingAlong
-				</H4>
-				<div style={{ display: 'flex', justifyContent: 'center' }}>
+			<div id="appMain" className="w-screen">
+				<div id="title">
+					<H4 style={{ display: 'flex', justifyContent: 'center' }}>
+						HootNet SingAlong
+					</H4>
+				</div>
+				{/* <div id="testdiv" className="h-32 bg-red-500 w-1/3"></div>
+				<div classsName="w-screen">
+					<DragWrapper>
+						<div id="testdiv" className="absolute w-64 h-32 bg-blue-500"></div>
+					</DragWrapper>
+				</div> */}
+				<div
+					id="buttonMenu"
+					style={{ display: 'flex', justifyContent: 'center' }}
+				>
 					<ButtonAddVideo />
 					<ButtonCamera />
 					<ButtonPlayPause />
@@ -42,7 +77,8 @@ const App = () => {
 					<ButtonJoyride />
 					<ButtonDesktop />
 				</div>
-
+				{/* <Jitsi /> */}
+				{/* <div id="Jitsi"><DragWrapper Element={Jitsi} /></div> */}
 				<AddVideoDialog />
 				<VideoMonitor />
 				<br />
@@ -50,6 +86,7 @@ const App = () => {
 				<Videos />
 				{/* </TransformWrapper> */}
 				<br />
+
 				{/* <Videos>
       Videos
       Video

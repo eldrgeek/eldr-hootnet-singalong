@@ -3,8 +3,10 @@ import { CurrentModule, useApp, register } from '../util/CurrentModule'; //eslin
 import ReactPlayer from 'react-player';
 import getCameraStream from '../lib/getCameraStream';
 import Blobber from '../lib/blobber';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import ButtonBase from './ButtonBase';
+import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 
+import DragWrapper from './DragWrapper';
 //eslint-disable-next-line
 const CL = (...args) => {
 	console.log(...args, __filename);
@@ -41,13 +43,18 @@ const Monitor = () => {
 	}, [state.videos.recording]); //eslint-disable-line
 	return (
 		<React.Fragment>
-			<ReactPlayer
-				height={'50%'}
-				width={'50%'}
-				muted={true}
-				url={cameraStream}
-				playing={true}
-			/>
+			{state.videos.cameraOn ? (
+				<DragWrapper>
+					<ReactPlayer
+						height={'250px'}
+						width={'400px'}
+						muted={true}
+						url={cameraStream}
+						playing={true}
+					/>
+					<ButtonBase icon={faArrowsAlt} />
+				</DragWrapper>
+			) : null}
 		</React.Fragment>
 	);
 };

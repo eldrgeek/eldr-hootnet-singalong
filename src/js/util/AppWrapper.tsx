@@ -38,7 +38,7 @@ const Component = () => {
 						if (entry.path.match(/\/util\//)) return null;
 						const EL = state._debugger.registrations[key].element;
 						return (
-							<div style={{ border: '1px solid black' }} key={key}>
+							<div style={{ border: 'px solid black' }} key={key}>
 								<EL key={key} />
 								<Link
 									style={{ marginLeft: '4px' }}
