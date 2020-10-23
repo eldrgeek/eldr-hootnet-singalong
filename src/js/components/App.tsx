@@ -47,8 +47,11 @@ const CL = (...args) => {
 // 	);
 // };
 const App = () => {
-	// const { state, actions } = useApp();
-
+	const { state, actions } = useApp();
+	React.useEffect(() => {
+		//@ts-ignore
+		actions.firebase.init();
+	}, []);
 	return (
 		<React.Fragment>
 			<div id="appMain" className="w-screen">
