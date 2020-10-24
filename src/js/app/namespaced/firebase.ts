@@ -14,7 +14,7 @@ export type Actions = {
 	store: Action<StorageSpec>;
 	list: Action<string>;
 	upload: Action<StorageSpec>;
-	download: Action<string, any>;
+	download: Action<string,Promise<URL>>; 
 };
 
 export const actions: Actions = {
@@ -54,10 +54,29 @@ export const actions: Actions = {
 		CL('stored');
 	},
 	upload({ state }, spec: StorageSpec) {
+		CL('upload');
 		const ref = firebase.storage().ref(spec.path);
+		CL('got ref', ref);
+		fetch(spec.content)
+			.then((r) => r.blob())
+			.then((blob) => {
+				ref
+					.put(blob)
+					.then((snapshot) => {
+						CL('uploaded');
+					})
+					.catch((e) => {
+						CL('Error uploading: ', e);
+					});
+			});
 	},
-	download({ state }, path: string) {
-		const ref = firebase.storage().ref(path);
+	download({ state, actions }, path: string) {
+		try {
+			const ref = firebase.storage().ref(path);
+			return ref.getDownloadURL()
+		} catch (e) {
+			CL('Error ', e);
+		}
 	},
 	list({ state }, path = '/') {
 		const ref = firebase.storage().ref(path);

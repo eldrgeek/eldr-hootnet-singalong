@@ -1,7 +1,7 @@
 let CLPrintStatus = {};
 export const C = (filename, category?) => {
 	return (...args) => {
-		if (category && CLPrintStatus[category] === true)
+		if (!category || CLPrintStatus[category] === true)
 			console.log(...args, `(${filename})`);
 	};
 };

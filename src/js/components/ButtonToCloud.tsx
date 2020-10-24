@@ -4,11 +4,17 @@ import ButtonBase from './ButtonBase';
 import { Input } from '@material-ui/core';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 const CL = C(__filename);
-
 const Component = ({ id = null }) => {
 	const { actions, state } = useApp();
 
-	const clickToCloud = (e) => {};
+	const clickToCloud = (e) => {
+		//@ts-ignore
+		actions.firebase.upload({
+			path: 'testvideo',
+			content: state.videos.videos[id].URL,
+			metadata: 'video.webm'
+		});
+	};
 	return (
 		<React.Fragment>
 			<ButtonBase

@@ -45,9 +45,23 @@ const Component = () => {
 					title: 'Enter video URL',
 					onClick: () => {
 						CL('select the video');
-						//@ts-ignore
-						actions.videos.add(state.videos.videoTitle);
-						//@ts-ignore
+						if (state.videos.videoTitle.match(/^h/)) {
+							const URL = actions.firebase.download('testvideo');
+							if (URL) {
+								URL.then((URL) => {
+									CL('URL is ', URL);
+									//@ts-ignore
+									actions.videos.add(URL);
+								}).catch((e) => {
+									CL('ERor', e);
+								});
+							}
+						} else {
+							//@ts-ignore
+							actions.videos.add(state.videos.videoTitle);
+						}
+						CL('Set type');
+						//@ts-ignore}
 						actions.UI.setDialogType('');
 					}
 				});
