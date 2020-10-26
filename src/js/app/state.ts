@@ -14,7 +14,7 @@ import {
 	State as FirebaseState
 } from './namespaced/firebase';
 
-export type State = {
+export interface State { 
 	_debugger: DebuggerState;
 	messages: MessagesState;
 	videos: VideosState;

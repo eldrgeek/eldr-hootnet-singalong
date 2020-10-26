@@ -9,17 +9,18 @@ interface StorageSpec {
 	content: any;
 	metadata: string;
 }
-export type Actions = {
+export interface Actions {
 	init: Action;
 	store: Action<StorageSpec>;
 	list: Action<string>;
 	upload: Action<StorageSpec>;
-	download: Action<string,Promise<URL>>; 
-};
+	download: Action<string, Promise<URL>>;
+}
 
 export const actions: Actions = {
 	init({ state, actions }) {
 		CL('start init');
+		if (fb) return;
 		const firebaseConfig = {
 			apiKey: 'AIzaSyDazmoZ4hGks6Lw1E56wmp7F2rEivDjKwU',
 			authDomain: 'mike-wolf.firebaseapp.com',
@@ -34,6 +35,7 @@ export const actions: Actions = {
 		try {
 			CL('Init');
 			firebase.initializeApp(firebaseConfig);
+			fb = firebase;
 		} catch (e) {
 			CL('Already initialized', e);
 			// firebase.analytics();
@@ -73,7 +75,7 @@ export const actions: Actions = {
 	download({ state, actions }, path: string) {
 		try {
 			const ref = firebase.storage().ref(path);
-			return ref.getDownloadURL()
+			return ref.getDownloadURL();
 		} catch (e) {
 			CL('Error ', e);
 		}
@@ -100,9 +102,9 @@ export const actions: Actions = {
 			});
 	}
 };
-export type State = {
+export interface State {
 	fb: any;
-};
+}
 
 export const state: State = {
 	fb: null

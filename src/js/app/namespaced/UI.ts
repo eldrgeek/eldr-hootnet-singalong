@@ -1,12 +1,12 @@
 import { Action } from '../index';
 
-export type Actions = {
+export interface Actions {
 	setTextInput: Action<string>;
 	setDialogVisible: Action<boolean>;
 	setJoyride: Action<boolean>;
 	setJoyrideIndex: Action<number>;
 	setDialogType: Action<string>;
-};
+}
 
 export const actions: Actions = {
 	setTextInput: ({ state, actions }, text) => {
@@ -26,13 +26,13 @@ export const actions: Actions = {
 	}
 };
 
-export type State = {
+export interface State {
 	textInput: string;
 	isDialogVisible: boolean;
 	joyride: boolean;
 	joyrideIndex: number;
 	dialogType: string;
-};
+}
 
 export const state: State = {
 	textInput: '',

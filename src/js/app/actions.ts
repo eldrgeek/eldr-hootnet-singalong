@@ -19,13 +19,13 @@ import {
 	Actions as FirebaseActions
 } from './namespaced/firebase';
 
-export type Actions = {
+export interface Actions {
 	messages: MessageActions;
 	videos: VideoActions;
 	_debugger: _DebuggerActions;
 	UI: UIActions;
 	firebase: FirebaseActions;
-};
+}
 
 export const actions: Actions = {
 	messages,

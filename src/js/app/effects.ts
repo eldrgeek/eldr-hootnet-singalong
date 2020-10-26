@@ -1,12 +1,12 @@
 // // import page from 'page';
-// import { Action } from "overmind";
+import {} from 'overmind';
 export const storage = {
-  saveJoyride(joyride: any) {
-    localStorage.setItem("joyride", JSON.stringify(joyride));
-  },
-  getJoyride(): any {
-    return JSON.parse(localStorage.getItem("joyride") || "{}");
-  }
+	saveJoyride(joyride: any) {
+		localStorage.setItem('joyride', JSON.stringify(joyride));
+	},
+	getJoyride(): any {
+		return JSON.parse(localStorage.getItem('joyride') || '{}');
+	}
 };
 
 // export const rooms = {

@@ -2,14 +2,19 @@
 import React from 'react'; //eslint-disable-line
 import { render } from 'react-dom';
 import { Provider } from 'overmind-react';
-import { app, useApp } from '../app';
-import { C, CLPrint } from './CL';
-const CL = C(__filename, 'loading');
-CL('Current Module Loaded');
-
+// import { app, useApp } from '../app';
+import { C } from './Log';
+import { useRadioGroup } from '@material-ui/core';
+const con = C(__filename);
+con.log('1Hz loaded');
+let app, useApp;
+export const registerApp = (a, ua) => {
+	app = a;
+	useApp = ua;
+};
 // eslint-disable-next-line no-unused-vars
 const Nothing = () => {
-	return 'The currrent module is Currnet Module';
+	return 'The currrent module is 1Hz';
 };
 
 //@ts-ignore
@@ -38,3 +43,16 @@ const CurrentModule = (Element, props?) => {
 export { CurrentModule, app, useApp, useRegistration, register, C };
 export default CurrentModule;
 CurrentModule(Nothing);
+
+if (module.hot) {
+	module.hot.dispose((data) => {
+		con.log('disposing');
+		data.app = app;
+		data.useApp = useApp;
+	});
+	if (module.hot.data) {
+		con.log('restoring');
+		app = module.hot.data.app;
+		useApp = module.hot.data.useApp;
+	}
+}

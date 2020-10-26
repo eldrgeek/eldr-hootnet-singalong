@@ -1,9 +1,9 @@
 // import { Action } from "../index";
 // import { CurrentModule, useApp, app } from "../../util/CurrentModule";
 
-export type Actions = {};
+export interface Actions {}
 
 export const actions: Actions = {};
-export type State = {};
+export interface State {}
 
 export const state: State = {};
