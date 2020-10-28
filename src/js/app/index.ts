@@ -35,7 +35,9 @@ export const app = createOvermind(
 console.log(typeof app.state.newspace);
 export const useApp = createHook<typeof app>();
 registerApp(app, useApp);
+//@ts-ignore
 app.actions.newspace.incr();
+console.log('index values ', app.state.newspace.count);
 export interface Action<argType = void, returnType = void> {
 	(
 		{ state, actions }: { state?: State; actions?: typeof app.actions },

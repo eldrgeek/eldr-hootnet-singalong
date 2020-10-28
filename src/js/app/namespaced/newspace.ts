@@ -11,6 +11,7 @@ export const actions: Actions = {
 	// @ts-ignore: ignore error TS2339 property does not exist
 
 	incr: ({ state }) => {
+		//@ts-ignore
 		state.newspace.count++;
 	}
 };
