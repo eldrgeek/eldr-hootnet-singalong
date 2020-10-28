@@ -22,6 +22,7 @@ export const actions: Actions = {
 		//@ts-ignore
 		actions.messages.clear();
 		state.messages.text = message;
+		//@ts-ignore
 		state.messages.timeout = setTimeout(actions.messages.clear, 5000);
 	},
 	clear: ({ state, actions }) => {
