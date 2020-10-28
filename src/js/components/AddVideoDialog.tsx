@@ -23,6 +23,7 @@ const Component = () => {
 	};
 	const [mode, setMode] = React.useState(modeNull);
 	React.useEffect(() => {
+		CL(state.UI.dialogType);
 		switch (state.UI.dialogType) {
 			case 'loadconfig':
 				setMode({
@@ -36,7 +37,7 @@ const Component = () => {
 				setMode({
 					title: 'Save configuration as',
 					onClick: () => {
-						console.log('Save congig');
+						CL('Save congig');
 					}
 				});
 				break;
@@ -44,8 +45,9 @@ const Component = () => {
 				setMode({
 					title: 'Enter video URL',
 					onClick: () => {
-						CL('select the video');
-						if (state.videos.videoTitle.match(/^h/)) {
+						if (state.videos.videoTitle.match(/^hoot/)) {
+							console.log('firebase', state.videos.videoTitle);
+							//@ts-ignore
 							const URL = actions.firebase.download('testvideo');
 							if (URL) {
 								URL.then((URL) => {
@@ -89,7 +91,7 @@ const Component = () => {
 		CL('setting value', e.target.value);
 		//@ts-ignore
 		actions.videos.setVideoTitle(e.target.value);
-		// CL('setting', e.target.value);
+		CL('setting', e.target.value);
 	};
 	if (state.UI.dialogType === '') return null;
 	return (

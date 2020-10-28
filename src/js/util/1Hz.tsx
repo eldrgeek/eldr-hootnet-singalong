@@ -3,6 +3,7 @@ import React from 'react'; //eslint-disable-line
 import { render } from 'react-dom';
 import { Provider } from 'overmind-react';
 // import { app, useApp } from '../app';
+// import '@types/webpack-env';
 import { C } from './Log';
 import { useRadioGroup } from '@material-ui/core';
 const con = C(__filename);
@@ -43,16 +44,20 @@ const CurrentModule = (Element, props?) => {
 export { CurrentModule, app, useApp, useRegistration, register, C };
 export default CurrentModule;
 CurrentModule(Nothing);
-
+//@ts-ignore
 if (module.hot) {
+	//@ts-ignore
 	module.hot.dispose((data) => {
 		con.log('disposing');
 		data.app = app;
 		data.useApp = useApp;
 	});
+	//@ts-ignore
 	if (module.hot.data) {
 		con.log('restoring');
+		//@ts-ignore
 		app = module.hot.data.app;
+		//@ts-ignore
 		useApp = module.hot.data.useApp;
 	}
 }

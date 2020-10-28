@@ -49,16 +49,18 @@ const Video = ({ id }) => {
 	return (
 		<React.Fragment>
 			<div style={{ width: '400px', height: '300px' }}>
-				{state.videos.videos[id].loadingState === 'loaded' ? (
-					<div className="opacity-0 absolute top-0 bg-red-500 w-full h-full">
-						{' '}
-					</div>
-				) : null}
+				{state.videos.videos[id].loadingState === 'loaded'
+					? // <div className="opacity-0 absolute top-0 bg-red-500 w-full h-full">
+					  // 	{' '}
+					  // </div>
+					  null
+					: null}
 				<ReactPlayer
 					style={{
 						opacity: state.videos.videos[id].loadingState === 'loaded' ? 1 : 0.2
 					}}
 					controls={true}
+					muted={false}
 					height={'80%'}
 					width={'80%'}
 					url={state.videos.videos[id].URL}

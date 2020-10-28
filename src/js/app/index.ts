@@ -44,7 +44,7 @@ export interface Action<argType = void, returnType = void> {
 }
 
 // console.log("Appstate", app.state);
-console.log('COUNT', app.state.newspace.count);
+// console.log('COUNT', app.state.newspace.count);
 
 declare module 'overmind' {
 	interface Config extends IConfig<typeof app> {}
