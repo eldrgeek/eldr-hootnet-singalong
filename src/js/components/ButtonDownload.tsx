@@ -11,7 +11,7 @@ const CL = (...args) => {
 	console.log(...args, `(/src/js/util/CreateModules.tsx)`);
 };
 
-const Component = ({ move, id = null }) => {
+const Component = ({ move = '', id = null }) => {
 	const { actions, state } = useApp();
 	const computeDisabled = () => {
 		if (id) return false;
