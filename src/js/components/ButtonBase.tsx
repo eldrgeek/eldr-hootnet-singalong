@@ -19,7 +19,8 @@ const StyledButton = styled(IconButton)`
 	box-shadow: 0 4px 6px rgba(50, 50, 93, 0.4), 0 1px 3px rgba(0, 0, 0, 0.08);
 	padding: 5px 5px;
   margin: 3px; 
-
+	position: ${(props) => (props.move ? 'relative' : undefined)};
+  top: ${(props) => (props.move ? props.move : undefined)};
   /* & .MuiIconButton-root {
     color: red;
   } */
@@ -38,7 +39,8 @@ const Component = ({
 	icon = faCamera,
 	color = 'red',
 	buttoncolor = 'green',
-	bg = 'white'
+	bg = 'white',
+	move = ''
 }) => {
 	const { actions, state } = useApp(); //eslint-disable-line
 	const onClickHandler = (e) => {
@@ -49,6 +51,7 @@ const Component = ({
 			<StyledButton
 				id={id}
 				bg={bg}
+				move={move}
 				// color={color}
 				buttoncolor={buttoncolor}
 				disabled={disabled}

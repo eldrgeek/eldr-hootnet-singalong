@@ -80,9 +80,9 @@ const Video = ({ id }) => {
 						<ButtonToCloud id={id} />
 					</React.Fragment>
 				) : (
-					<ButtonBase icon={faArrowsAlt} />
+					<ButtonBase move="-45px" icon={faArrowsAlt} />
 				)}
-				<ButtonDelete id={id} />
+				<ButtonDelete move="-45px" id={id} />
 			</div>
 		</React.Fragment>
 	);
