@@ -11,19 +11,19 @@ const CL = (...args) => {
 	//esliint-disable-line
 	console.log(...args, `(${__filename})`);
 };
+CL('loaded');
 const Video = ({ id }) => {
 	const { state, actions } = useApp();
 	const videoRef = React.useRef({});
-	const urlIsBlob = () => state.videos.videos[id].URL.match(/^blob:/);
-
+	const urlIsBlob = () =>
+		state.videos.videos[id].URL.match(/^blob:|^https:\/\/firebasestorage/);
 	React.useEffect(() => {
-		// CL(id, state.videos.videos);
 		if (urlIsBlob()) {
 			//@ts-ignore
 			actions.videos.setLoadingState({ id, newState: 'loaded' });
 			return;
 		}
-	}, []); //eslint-disable-line
+	}); //eslint-disable-line
 	React.useEffect(() => {
 		// CL(id, state.videos.videos);
 		if (state.videos.videos[id].rewinding) {
@@ -46,6 +46,7 @@ const Video = ({ id }) => {
 			videoRef.current.seekTo(0);
 		}, 10);
 	};
+	CL('render');
 	return (
 		<React.Fragment>
 			<div style={{ width: '400px', height: '300px' }}>
@@ -76,8 +77,8 @@ const Video = ({ id }) => {
 				/>
 				{urlIsBlob() ? (
 					<React.Fragment>
-						<ButtonDownload id={id} />
-						<ButtonToCloud id={id} />
+						<ButtonDownload move="-45px" id={id} />
+						<ButtonToCloud move="-45px" id={id} />
 					</React.Fragment>
 				) : (
 					<ButtonBase move="-45px" icon={faArrowsAlt} />

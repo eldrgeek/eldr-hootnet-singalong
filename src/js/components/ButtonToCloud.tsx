@@ -4,7 +4,7 @@ import ButtonBase from './ButtonBase';
 import { Input } from '@material-ui/core';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 const CL = C(__filename);
-const Component = ({ id = null }) => {
+const Component = ({ move, id = null }) => {
 	const { actions, state } = useApp();
 
 	const clickToCloud = (e) => {
@@ -17,7 +17,7 @@ const Component = ({ id = null }) => {
 	};
 	return (
 		<React.Fragment>
-			<ButtonBase
+			<ButtonBase move={move}
 				buttoncolor={id ? 'gray' : 'blue'}
 				icon={faCloudUploadAlt}
 				//@ts-ignore

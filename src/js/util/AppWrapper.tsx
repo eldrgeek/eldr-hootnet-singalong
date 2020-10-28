@@ -10,7 +10,7 @@ import { dispatch, actions } from 'codesandbox-api';
 //eslint-disable-next-line
 import { C } from './CL';
 const CL = C(__filename);
-CL('this is a test if');
+// CL('this is a test if');
 
 const openFile = (file) => {
 	dispatch(actions.editor.openModule(file, 1));

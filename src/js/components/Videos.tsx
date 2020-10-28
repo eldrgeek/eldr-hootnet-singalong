@@ -39,9 +39,11 @@ const Videos = () => {
 		<React.Fragment>
 			{Object.keys(state.videos.videos).map((key, index) => {
 				return (
-					<DragWrapper>
-						<Video key={key} id={key} />
-					</DragWrapper>
+					<div key={index}>
+						<DragWrapper>
+							<Video key={key} id={key} />
+						</DragWrapper>
+					</div>
 				);
 			})}
 		</React.Fragment>

@@ -18,13 +18,12 @@ const Component = ({ Element = Default, children }) =>
 	{
 		React.useEffect(() => {
 			// actions.videos._test();
-			console.clear();
 
 			const trans1 = document.querySelectorAll('.wrapperparent');
-			CL('groupc', trans1.length);
+			// CL('groupc', trans1.length);
 			for (let i = 0; i < trans1.length; i++) {
 				// trans[i].style.fontFamily = 'Comic Sans MS';
-				CL('trans', trans1[i].firstChild);
+				// CL('trans', trans1[i].firstChild);
 				//@ts-ignore
 				trans1[i].firstChild.style.overflow = 'visible';
 			}

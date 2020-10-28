@@ -19,7 +19,7 @@ export interface Actions {
 
 export const actions: Actions = {
 	init({ state, actions }) {
-		CL('start init');
+		// CL('start init');
 		if (fb) return;
 		const firebaseConfig = {
 			apiKey: 'AIzaSyDazmoZ4hGks6Lw1E56wmp7F2rEivDjKwU',
@@ -33,13 +33,13 @@ export const actions: Actions = {
 		};
 		// Initialize Firebase
 		try {
-			CL('Init');
+			// CL('Init');
 			firebase.initializeApp(firebaseConfig);
-			fb = firebase;
 		} catch (e) {
 			CL('Already initialized', e);
 			// firebase.analytics();
 		}
+		fb = firebase;
 	},
 	store({ state, actions }, spec: StorageSpec) {
 		if (!spec || !spec.path) return;
