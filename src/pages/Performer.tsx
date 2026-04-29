@@ -136,7 +136,7 @@ export default function Performer() {
 
       // RTT polling
       rttIntervalRef.current = setInterval(async () => {
-        const stats = await room.getStats()
+        const stats = await (room as any).getStats()
         // Look for RTT in stats
         for (const report of stats.values ? stats.values() : []) {
           if ((report as any).type === 'candidate-pair' && (report as any).state === 'succeeded') {
